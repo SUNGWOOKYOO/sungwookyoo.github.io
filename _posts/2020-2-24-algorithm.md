@@ -5,7 +5,6 @@ excerpt: "Maximum Subarray Problem step by step"
 categories:
   - algorithms
 tags:
-  - algorithms
   - DP 
   - DivideConquer
   - incremental 

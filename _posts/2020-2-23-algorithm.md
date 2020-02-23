@@ -6,6 +6,8 @@ categories:
   - algorithms
 tags:
   - DP
+  - DFS
+  - BFS
 use_math: true
 last_modified_at: 2020-02-23
 ---

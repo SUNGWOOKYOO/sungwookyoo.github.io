@@ -1,5 +1,5 @@
 ---
-title: "Window Anaconda setup(WSL)"
+title: "Window Anaconda setup"
 excerpt: "describe how to use anaconda on window"
 
 categories:
@@ -8,7 +8,7 @@ tags:
   - install
   - WSL
 use_math: true
-last_modified_at: []
+last_modified_at: 2020-02-24
 ---
 
 # Anaconda 설치법 
