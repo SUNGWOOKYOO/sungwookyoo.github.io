@@ -1,8 +1,8 @@
 ---
 title: "Algorithms"
-permalink: /categories/algorithms
+permalink: /categories/algorithms/
 layout: category
 author_profile: true
-taxonomy: algorithm
+taxonomy: algorithms
 ---
 Algorithm page.
