@@ -6,10 +6,9 @@ categories:
   - algorithms
 tags:
   - DP
+use_math: true
 last_modified_at: 2020-02-23
 ---
-
-# 494. Target Sum
 
 [leetcode](https://leetcode.com/problems/target-sum/)  
 [good discuss](https://leetcode.com/problems/target-sum/discuss/325250/Python-different-soluctions%3A-DFS-BFS-DP)
