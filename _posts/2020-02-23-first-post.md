@@ -7,7 +7,6 @@ categories:
 tags:
   - Blog
 last_modified_at: 2020-02-23  
-
 ---
 
 I decided to start a blogging service.
