@@ -8,5 +8,5 @@ main:
     url: /categories
   - title: "Algorithms"
     url: /categories/algorithms
-  - title: "tags"
+  - title: "Tags"
     url: /tags/
