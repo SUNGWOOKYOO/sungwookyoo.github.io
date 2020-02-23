@@ -3,7 +3,7 @@ title: " Linux tip "
 excerpt: "Linux 를 다루는데 필요한 tip"
 
 categories:
-  - Tips
+  - tips
 tags:
   - linux
 use_math: true
