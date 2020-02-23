@@ -143,7 +143,7 @@ return True
 
 $\bar{G} = (V, \bar{E})$ 가 되는데 이 연산은 모든 vertex pair에 대해 edge가 존재하는지 확인하고 있다면 삭제하고, 없으면 새로 edge를 만드는 작업이므로 $O(V^2)$ 이 걸림
 
-![VC](./images/VC.PNG)
+![VC](/assets/images/VC.PNG)
 
 **Clique $\Rightarrow $ VC:**  주목할점: $k-clique \Rightarrow |V|-k$ size 의 $VC$ 
 
@@ -188,7 +188,7 @@ Set Cover에서 커버할 모든 원소는 graph $G$의 모든 edge $E$로 한�
 
 이렇게 변환된 Set Cover 문제의 size $k$는 Vertex Cover size $k$ 와 동일하다. (왜 그런지는 증명을 보면 됨)
 
-![sc](./images/SC.PNG)
+![sc](/assets/images/SC.PNG)
 
 **VC$\Rightarrow $ SC:** VC set의 정의는 모든 edge 에서 한쪽 정점은 반드시 VC set에 걸쳐 있다. 따라서 Vertex Set에 속한 k 개의 정점들 $v_i|_{i=1,..,,k}$에 대해 대응된 k개의  $S_i|_{i=1,..,k} = C'$ 들만 골라서 union하면 모든 edge 원소들 A를 커버하게 된다. 
 
@@ -210,21 +210,21 @@ Set Cover에서 커버할 모든 원소는 graph $G$의 모든 edge $E$로 한�
 
 > Check if every vertex (except the first) appears exactly once, and that consecutive vertices are connected by a directed edge
 
-![그림](./images/hampath.PNG) 
+![그림](/assets/images/hampath.PNG) 
 
 **Ham-Path is NP-hard**
 
 **Reduction algorithm:**  3-SAT의 literal $x_1, .., x_n$에 대해서m 개의 clause가 있었다면,  각 literal마다 $2m$ 개의 정점들로 구성된 양 방향 horizontal path를 만들고,  literal 순서대로 양끝을 이어 나간다. 
 
-![ham2](./images/hampath2.PNG)
+![ham2](/assets/images/hampath2.PNG)
 
 그 후에, 각 clause 마다 정점을 하나씩 만들고, 3-SAT에서 $x_i$ 가 True였다면 왼쪽에서 오른쪽으로, 아니였다면 반대로 path를 만든다. 
 
-![ham3](./images/hampath3.PNG)
+![ham3](/assets/hampath3.PNG)
 
 따라서, 다음과 같이 완성
 
-![ham4](./images/hampath5.PNG)
+![ham4](/assets/hampath5.PNG)
 
 **Ham-Path $\Rightarrow $ 3-SAT:** 만약, hamiltonian cycle에서 $x_i$ 에대한 horizontal path가 왼쪽으로 오른쪽이었다면, $x_i$ 를 True로, 아니면 False로 assign한다면 Boolean 수식은 satisfiable하게 된다. 왜냐하면 hamiltonian cycle에서 각 clause에 대한 node를 한번씩 지나게 되는데 그 한번만 지날때의 horizontal path에서 literal이 clause를 True로 만들게 된다. 따라서, 모든 clause가 True가 되어 satisfiable하다. 
 
@@ -403,7 +403,7 @@ $$
 > Let $c_x$ be the price allocated to element $x ∈ X$, that is covered
 > for the first time at $ i $ th iteration.
 
-![sc2](./images/SC2.PNG)
+![sc2](/assets/SC2.PNG)
 
 전체 iteration 동안 cost $|C| = \sum_{x\in U}{c_x}$ 가 된다. 
 

@@ -10,8 +10,6 @@ use_math: true
 last_modified_at: 2020-02-24
 ---
 
-## Maximum Subarray Problem
-
 array $a[1..n]$이 주어졌을때, 연결된 subarray값의 최대 합을 찾는 문제
 
 **naive** 

@@ -3,7 +3,7 @@ title: "APM part1"
 excerpt: "Advanced Programming Methologies part1"
 
 categories:
-  - agorithms
+  - algorithms
 tags:
   - algorithms
 use_math: true
@@ -30,7 +30,7 @@ incremental하게 하나씩 원소를 삽입하며 정렬하는 방식
 
 즉, $j$ 번째 이전에 이미 정렬되어있는 상태에서 $A_j$를 삽입한후 제자리를 찾아가는 방식
 
-![](./images/insert.PNG)
+![](/assets/images/insert.PNG)
 
 ```python
 insert(A, j, key)
@@ -54,7 +54,7 @@ IS(A)
 
 ### Quicksort (increasing order) 
 
-### ![qs](./images/quicksort_partition.PNG)
+### ![qs](/assets/images/quicksort_partition.PNG)
 
 ```python
 QS(a, p, r)
@@ -129,13 +129,13 @@ intuition: quick sort에서 parition 은 $O(n)$ 번 불리게 되어있다. 이�
 
 그래서 call 되는 patition 함수들 안에서 비교되는 횟수의 합의 평균  $E[X] $가 성능을 좌우한다. 이 값을 구하기위해 그 안에서 정렬된 숫자를 $\{z_i, ...,z_j\}$ 라고 하면, 
 
-![picture](./images/quicksort_time1.PNG)
+![picture](/assets/images/quicksort_time1.PNG)
 
 그리고, $E[X]$를 estimate하기위해  i.i.d. $ X_{ij} = 1$ (if $z_i$  is compared to $z_j$, o.w., 0) 를 정의하면 ($P[$ $z_i$  is compared with $z_j] = P_{ij}$ 라 하자, iid 특성은 평균값이 확률값과 같음) 
 
 $E[X] = E[\sum_{i=1}^{n-1}\sum_{j=i+1}^{n}X_{ij}] = \sum_{i=1}^{n-1}\sum_{j=i+1}^{n}E[X_{ij}] = $ $\sum_{i=1}^{n-1}\sum_{j=i+1}^{n}$$P_{ij}$ 이되는데, 
 
-![picture](./images/quicksort_time2.PNG)
+![picture](/assets/images/quicksort_time2.PNG)
 
 위의 그림으로 부터 알 수 있는 것은, 서로 다른 partition에 있는 $z_i$ 와 $z_j$ 는 절대 비교 안된다는 사실로부터 partition 함수 안에  $z_i$, $z_j$ 가  있어야하며 둘중 하나는 반드시 pivot이 될것 이라는 사실이다. 따라서, $j-i+1$ element 중 $z_i, z_j$가 각각 pivot으로 뽑힐 확률인 $P_{ij} = 2/(j-i+1)$  이다.
 
@@ -388,7 +388,7 @@ bottom up 방식이 좀 어려울수 있다.
 
 chain length $l = 1, ..., n$ 까지 minimum cost를 업데이트 하면 optimal cost를 찾을 수 있다. 
 
- ![matrixchain](./images/matrixchain.PNG)
+ ![matrixchain](/assets/images/matrixchain.PNG)
 
 $T(n) = O(n^3)$
 
@@ -569,7 +569,7 @@ $S_k|_{k=[1,2^n]} = \{ \text{최대 n 개의 activity} \}$
 
 **approach1 **교재의 방식은 
 
-![act1](./images/activity1.PNG)
+![act1](/assets/activity1.PNG)
 
 $S_{0,n+1}$ 의 원소 갯수가 최대가 되도록 선택을 하고 싶다! (dummy 원소 $a_0, a_{n+1}$ 두고)
 
@@ -587,7 +587,7 @@ $T(n) = O(n^3) $
 
 **approach2** 또 다른 방식으로 entry수를 $n$으로 줄여 보았다. 
 
-![act2](./images/activity2.PNG)
+![act2](/assets/images/activity2.PNG)
 
 $L_i$ 는 <u>$a_i$를 포함</u> 하는 $0,..., i $에 대해 compatible 한 activity 갯수
 
@@ -1058,7 +1058,7 @@ shortest path 가 결정된 vertex 집합을 $S$라 하고, 매 iteration 마다
 
 **base case:** 시작점 source vertex의 shortest distance 는 0이므로 $s.d = \delta(s,s) = 0$ correct 
 
-![dijkstra](./images/dijkstra.PNG)
+![dijkstra](/assets/dijkstra.PNG)
 
 **Induction step:** 임의의 iteration 이전까지는 S안에 shortest path distance들이 결정된 vertex들만 들어가다가 <u>dijkstra 알고리즘에의해 처음으로 $\color{red}u.d \neq  \delta(s.u)$ 인 $\color{red}u$가 queue에서 뽑혔다고 하자.(모순을 이끌어내겠다.)</u>
 
@@ -1208,7 +1208,7 @@ c(i,j) \ge 0 & \text{if } i \ne j, (i,j) \in E  \\
 $$
 $d_{ij}^{(k)}$: $v_i  \text{~} v_j$ 까지 가는데 $v_1, .., v_k$를 거쳐가는지에 대한 유무가 update된 shortest path distance ($k$ 가 증가함에따라 점점 더 많은 노드정보를 거쳐가는것에 대한 정보를 업데이트 된다).
 
-![그림](./images/floyd_overview.jpg)
+![그림](/assets/floyd_overview.jpg)
 $$
 d_{ij}^{(k)} = \left \{ 
 \begin{matrix}
@@ -1220,7 +1220,7 @@ Time complexity: $O(n^3)$ because all entry $(1\le i,j,k\le n)$ ,  is $n^3$, eac
 
 back propagation: $P^{(k)}$의 각 entry $P_{ij}^{(k)}$가 의미하는것은 현재까지 업데이트된 $v_k$ 를 지나는 $v_i \rightsquigarrow v_k \rightsquigarrow  v_j$ 의 shortest path 정보를 의미한다. ($k = 1,..,n$ 까지 모두 update되어야 진짜 shortest path가 됨)
 
-![algorithm](./images/floyd.PNG)
+![algorithm](/assets//floyd.PNG)
 
 [python](https://github.com/SUNGWOOKYOO/Algorithm/blob/master/src_Python/sw_graph/ApSP_FloydWarshall.ipynb)  [c++](https://github.com/SUNGWOOKYOO/Algorithm/blob/master/src_Cplus/graphAlgo/FloydWarshall.cpp) 
 
@@ -1437,7 +1437,7 @@ $T^{(k)}$는 MST $T^*$의 subgraph 인 상황
 
 일단, $T^* \cup e$ 는 사이클이 반드시 생긴다. ($T^*$는 minimums panning tree[^2]인데 edge를 추가했으니까 )
 
-![MST](./images/prim.PNG)
+![MST](/assets/prim.PNG)
 
 이 사이클 안에서 $u'$은 $T^{(k)}$ 안에 있고, $v'$ 은 $T^{(k)}$ 밖에 있는 $e$와 다른 어떤 한 edge $e'=(u',v')$ 을 고르자
 
@@ -1522,7 +1522,7 @@ $$
 
 Time complexity: $O(|E|f^*)$ , $f^*$ 은 flow를 업데이트 한 총 횟수 (운이 나쁘면 매우 오래걸릴 수 있다.)
 
-![Ford-Fulkerson](./images/ford_fulkerson.jpg)
+![Ford-Fulkerson](/assets//ford_fulkerson.jpg)
 
 
 
@@ -1586,7 +1586,7 @@ max matching size = total net flow 를 이용한다.
 6 Solve maximum network flow problem on this new graph G'
 ```
 
-![maxmatching](./images/maxmatching.PNG)
+![maxmatching](/assets/maxmatching.PNG)
 
 [pdf 영문 slide 설명](https://www.cs.cmu.edu/~ckingsf/bioinfo-lectures/matching.pdf)
 
@@ -1639,7 +1639,7 @@ From this inequality,   $|f|=c(S', T')$ implies $f$ is max flow. Thus, we have t
 
 (2 $\Rightarrow$ 3)  Let $S$ to be the set of vertices in $G$ that is reachable from $s$ by a path with positive edge capacities (of $G_f$), and let $T = V − S$. 
 
-![mincut](./images/mincut.PNG)
+![mincut](/assets/mincut.PNG)
 
 2가 True이면 augmenting path가 더이상 없으므로  <u>T에 속한 v 에 절대 reachable 할수 없다.</u> 그래서, $|f| = c(S,T)$ (3 도 True)라고 할 수 있다.
 
