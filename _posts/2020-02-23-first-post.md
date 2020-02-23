@@ -3,7 +3,7 @@ title: "Start github.io Blog service"
 excerpt: "I decided to start Github Blog service 'github.io' today"
 
 categories:
-  - Blog:
+  - Daily Life:
 tags:
   - Blog
 last_modified_at: 2020-02-23  
