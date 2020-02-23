@@ -6,6 +6,10 @@ categories:
   - algorithms
 tags:
   - algorithms
+  - DP 
+  - DivideConquer
+  - incremental 
+
 use_math: true
 last_modified_at: 2020-02-24
 ---
