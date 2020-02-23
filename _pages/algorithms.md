@@ -1,6 +1,6 @@
 ---
-title: "Algorithm"
-permalink: /categories/algorithm
+title: "Algorithms"
+permalink: /categories/algorithms
 layout: category
 author_profile: true
 taxonomy: algorithm
