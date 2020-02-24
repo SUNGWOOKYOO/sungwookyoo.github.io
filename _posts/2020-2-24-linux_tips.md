@@ -1,5 +1,5 @@
 ---
-title: " Linux tip "
+title: "Linux tips"
 excerpt: "Linux 를 다루는데 필요한 tip"
 
 categories:
