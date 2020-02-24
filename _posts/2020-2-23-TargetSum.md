@@ -1,5 +1,5 @@
 ---
-title: "494. Target Sum"
+title: "494.Target Sum"
 excerpt: "algoritm practice"
 
 categories:
