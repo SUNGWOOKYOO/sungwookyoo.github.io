@@ -10,8 +10,9 @@ tags:
 use_math: true
 last_modified_at: 2020-02-24
 toc: true
-toc_label: "Included Layouts"
-toc_icon: "columns"
+toc_label: "Contents"
+toc_icon: "cog"
+toc_sticky: true
 ---
 
 # 소스 코드 작성 요령
