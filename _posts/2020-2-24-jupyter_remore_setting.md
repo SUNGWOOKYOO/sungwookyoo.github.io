@@ -9,6 +9,9 @@ tags:
   - install
 use_math: true
 last_modified_at: 2020-02-24
+toc: true
+toc_label: "Included Layouts"
+toc_icon: "columns"
 ---
 
 # 소스 코드 작성 요령
