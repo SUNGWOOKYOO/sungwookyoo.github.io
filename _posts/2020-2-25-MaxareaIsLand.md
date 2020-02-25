@@ -12,20 +12,15 @@ toc: true
 toc_sticky: true
 toc_label: "contents"
 toc_icon: "cog"
-header:
-	overlay_image: https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToGoO3SIbVorRKj5sygOnY38Dxmtc1_Rsb5hGRuYgPrDVR1cqR
-	overlay_fiter: 0.5
-	caption: "islands"
-	actions:
-		- label: "leetcode"
-		  url: https://leetcode.com/problems/max-area-of-island/
-		- label: "github"
-		  url: http://147.46.244.76:16080/swyoo/algorithm/blob/master/problem/BFSDFS/695_Maxarea_island.ipynb
-sidebar:
-	- title: "Data is the new oil"
-	  image: https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ9A6DDhNitX7eGCOKhx3yBQGfBW2ccydHZHSVIMggIKwrItbUL
-	  image_alt: "image"
-	  text: "No sweat, no sweet"
+header: 
+  overlay_image: https://visit1000islands.com/wp-content/uploads/2019/03/CF006549_downsized-1500x710.jpg
+  overlay_filter: 0.5
+  captions: "islands"
+  actions:
+    - label: "leetcode"
+      url: "https://leetcode.com/problems/max-area-of-island/"
+    - label: "github"
+      url: "http://147.46.244.76:16080/swyoo/algorithm/blob/master/problem/BFSDFS/695_Maxarea_island.ipynb"
 ---
 
 [leetcode](https://leetcode.com/problems/max-area-of-island/)

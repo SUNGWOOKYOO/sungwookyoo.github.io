@@ -9,6 +9,6 @@ main:
   - title: "Algorithms"
     url: /categories/algorithms
   - title: "Tags"
-    url: /tags/
+    url: /tags/ 
   - title: "Year"
     url: /years/
