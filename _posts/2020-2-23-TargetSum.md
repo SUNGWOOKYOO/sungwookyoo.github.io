@@ -10,6 +10,7 @@ tags:
   - BFS
 use_math: true
 last_modified_at: 2020-02-23
+classes: wide
 ---
 
 [leetcode](https://leetcode.com/problems/target-sum/)  
