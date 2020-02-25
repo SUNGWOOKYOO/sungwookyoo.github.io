@@ -1,11 +1,15 @@
 ---
-title: "[]"
-excerpt: "[]"
+title: ""
+excerpt: ""
 
 categories:
-  - []
+  - 
 tags:
-  - []
+  - 
 use_math: true
-last_modified_at: []
+last_modified_at: 2020-
+toc: true
+toc_sticky: true
+toc_label: ""
+toc_icon: "cog"
 ---
