@@ -12,4 +12,18 @@ toc: true
 toc_sticky: true
 toc_label: ""
 toc_icon: "cog"
+header:
+	overlay_image: https:
+	overlay_fiter: 0.5
+	caption: ""
+	actions:
+		- label: "leetcode"
+		  url: 
+		- label: "github"
+		  url:
+sidebar:
+	- title: "Data is the new oil"
+	  image: https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ9A6DDhNitX7eGCOKhx3yBQGfBW2ccydHZHSVIMggIKwrItbUL
+	  image_alt: "image"
+	  text: "No sweat, no sweet"
 ---
