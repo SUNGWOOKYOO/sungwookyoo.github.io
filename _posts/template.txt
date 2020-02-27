@@ -3,9 +3,9 @@ title: ""
 excerpt: ""
 
 categories:
-	- 
+  - 
 tags:
-	- 
+  - 
 use_math: true
 last_modified_at: 2020-
 toc: true
@@ -13,17 +13,17 @@ toc_sticky: true
 toc_label: ""
 toc_icon: "cog"
 header:
-	overlay_image: 
-	overlay_filter: 0.5
-	caption: 
-	actions:
+  overlay_image: 
+  overlay_filter: 0.5
+  caption: 
+  actions:
     - label: "leetcode"
       url: ""
     - lable: "github"
       url: ""
- sidebar:
+  sidebar:
     - title: ""
-	  image: 
+      image: 
       image_alt: ""
       text: ""
     - title: ""
