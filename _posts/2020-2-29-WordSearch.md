@@ -13,9 +13,9 @@ toc_sticky: true
 toc_label: "Contents"
 toc_icon: "cog"
 header:
-    overlay_image: /assets/images/algorithms/tips.png
-    overlay_filter: 0.5
-    caption: python tips
+  overlay_image: /assets/images/algorithms/tips.png
+  overlay_filter: 0.5
+  caption: python tips
   actions:
     - label: "leetcode"
       url: "https://leetcode.com/problems/word-search/"
@@ -67,7 +67,6 @@ if seen[(i, j)] or (board[i][j] != word[pos]): # pruning cases.
 ```
 
 <div style="background-color:gray"> <summary> <font color=red> Warning </font></summary> <p> We should use carefully when we use `seen`. This is because the algorithm sometimes need rollback when it goes to wrong direction. The detail will be described in next section - example.</p></div>
-
 ### Outline of my code
 
 ```python
