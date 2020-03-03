@@ -9,7 +9,7 @@ tags:
 use_math: true
 toc: true
 toc_sticky: true
-toc_label: On this page:
+toc_label: "On this page"
 toc_icon: "cog"
 last_modified_at: 2999-12-31 23:59
 ---
