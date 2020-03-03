@@ -3,14 +3,24 @@
 {%- block header -%}
 ---
 title: "{{resources['metadata']['name']}}"
-search: true
+excerpt: "Need_modify"
 categories:
- - Notebook
+ - Need_modify
 tags:
  - Need_modify
-last_modified_at: 2999-12-31 23:59
-layout: jupyter
-classes: wide
+last_modified_at: 2020-03-00
+use_math: true
+toc: true
+toc_sticky: true
+toc_label: "On this page"
+toc_icon: "cog"
+header: 
+ overlay_image: 
+ overlay_filter: 0.5
+ caption: Need_modify
+ actions
+  - label: "Need_modify"
+  - url: "Need_modify"
 ---
 {%- endblock header -%}
 
