@@ -1,5 +1,5 @@
 ---
-title: "The Difference between Tensorflow and Python using Embedding"
+title: "The Difference between Tensorflow and Pytorch using Embedding"
 excerpt: "Compare Tensorflow and Pytorch when using Embedding."
 categories:
  - tips
