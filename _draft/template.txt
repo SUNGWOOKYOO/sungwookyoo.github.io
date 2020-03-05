@@ -6,17 +6,17 @@ categories:
 tags:
  - #
 use_math: true
-last_modified_at: "2020-03-03"
+last_modified_at: "DAY"
 toc: true
 toc_sticky: true
 toc_label: "On this page"
 toc_icon: "cog"
 header:
-  overlay_image: /assets/images/teaser.jpg
-  overlay_filter: 0.5
-  caption: #
-  actions:
-   - label: "#"
-   - url: "#"
+ overlay_image: /assets/images/teaser.jpg
+ overlay_filter: 0.5
+ caption: #
+ actions:
+  - label: "#"
+  - url: "#"
 ---
 
