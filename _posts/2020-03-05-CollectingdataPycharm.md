@@ -1,5 +1,5 @@
 ---
-title: "Unable to display frame varibles in Pycharm"
+title: "Unable to display frame variables in Pycharm"
 excerpt: "Collecting data... in pycharm "
 categories:
  - tips
