@@ -426,7 +426,7 @@ plt.show()
 </div>
 
 
-![png](/assets/images/bertgraph.PNG)
+![png](/assets/images/jupyter/bertgraph.PNG)
 
 
 ### Reshape hidden states of BERT-output for analysis.
@@ -460,7 +460,7 @@ logger.info(new_embed.shape) # complete
 
 ## Step3 - Create word and sentence vertors 
 
-<div style="background-color:gray"> <summary> issue </summary> 
+<div style="background-color:gray"> issue
     <p> which layer or combination of layers provides the best representation? In BERT paper, they compared it by F1-scores. </p>
 </div>
 
