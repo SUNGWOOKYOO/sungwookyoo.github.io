@@ -50,7 +50,7 @@ tensorflow==2.0.0
 
 # How to use BERT? 
 
-BERT [open soruce: pytorch](https://github.com/huggingface/transformers)
+BERT [open source: pytorch](https://github.com/huggingface/transformers)
 > If you want to use `transformers` module, follow this install [guide](https://huggingface.co/transformers/installation.html?highlight=install).  
 
 BERT [document](https://huggingface.co/transformers/index.html#)
