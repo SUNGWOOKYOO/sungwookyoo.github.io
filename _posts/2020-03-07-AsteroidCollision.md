@@ -13,6 +13,7 @@ toc: true
 toc_sticky: true
 toc_label: "On this page"
 toc_icon: "cog"
+classes: wide
 header:
  overlay_image: /assets/images/algorithms/algo.png
  overlay_filter: 0.5
