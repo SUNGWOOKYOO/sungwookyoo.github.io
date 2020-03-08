@@ -76,7 +76,7 @@ def dfs(i, j, ...):
         return True
     if seen[(i, j)] or (board[i][j] != word[pos]): 
         # pruning cases.
-		return False
+		    return False
     
     # visiting time
     seen[(i, j)] = True # mark 
