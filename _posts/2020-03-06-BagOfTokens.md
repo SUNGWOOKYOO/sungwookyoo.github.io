@@ -19,7 +19,7 @@ header:
  caption: think and think! 
  actions:
   - label: "leetcode"
-  - url: "https://leetcode.com/problems/bag-of-tokens/"
+    url: "https://leetcode.com/problems/bag-of-tokens/"
 ---
 
 ### BFS
