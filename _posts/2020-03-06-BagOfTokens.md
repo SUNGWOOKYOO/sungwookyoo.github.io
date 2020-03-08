@@ -9,6 +9,7 @@ tags:
 use_math: true
 last_modified_at: "2020-03-06"
 toc: true
+toc_ads: true
 toc_sticky: true
 toc_label: "On this page"
 toc_icon: "cog"
