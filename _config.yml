@@ -297,3 +297,4 @@ defaults:
       share: true
       related: true
       toc_ads: true
+      classes: wide
