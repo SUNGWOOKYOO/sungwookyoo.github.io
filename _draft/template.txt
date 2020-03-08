@@ -17,6 +17,6 @@ header:
  caption: #
  actions:
   - label: "#"
-  - url: "#"
+    url: "#"
 ---
 
