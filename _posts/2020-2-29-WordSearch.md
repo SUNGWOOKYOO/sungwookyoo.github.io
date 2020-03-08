@@ -13,7 +13,7 @@ toc_sticky: true
 toc_label: "Contents"
 toc_icon: "cog"
 header:
-  overlay_image: /assets/images/algorithms/tips.png
+  overlay_image: /assets/images/tips.png
   overlay_filter: 0.5
   caption: python tips
   actions:
@@ -76,7 +76,7 @@ def dfs(i, j, ...):
         return True
     if seen[(i, j)] or (board[i][j] != word[pos]): 
         # pruning cases.
-		    return False
+        return False
     
     # visiting time
     seen[(i, j)] = True # mark 
