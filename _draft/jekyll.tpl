@@ -1,5 +1,6 @@
 {% extends 'markdown.tpl' %}
 
+<!--
 {%- block header -%}
 ---
 title: "{{resources['metadata']['name']}}"
@@ -23,6 +24,7 @@ header:
   - url: "Need_modify"
 ---
 {%- endblock header -%}
+-->
 
 {% block in_prompt %}
 <div class="prompt input_prompt">
