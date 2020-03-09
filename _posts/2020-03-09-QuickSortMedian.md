@@ -296,9 +296,14 @@ WorkingTime[QuickSelectMedians]: 0.15450 ms
 
 ## Time Complexity Analysis
 
-/home/swyoo/Pictures/Screenshot from 2020-03-09 13-34-51.png
+![](/assets/images/algorithms/median.jpg)
 
-<img src="https://rcoh.me/images/median-of-medians.svg" alt="My Image" width=500><details> Top left: Every item in this quadrant is strictly less than the median <br>    Bottom left: These items may be bigger (or smaller!) than the median <br>    Top right: These items may be bigger (or smaller!) than the median <br>    Bottom right: Every item in this quadrant is strictly greater than the median <br></details>
+<details> 
+Top left: Every item in this quadrant is strictly less than the median <br>    
+Bottom left: These items may be bigger (or smaller!) than the median <br>    
+Top right: These items may be bigger (or smaller!) than the median <br>    
+Bottom right: Every item in this quadrant is strictly greater than the median <br>
+</details>
 
 $T(n/5)$ means recursive call when finding medOfmed value  
 when we use medOfmed as a pivot, after partitioning,  
