@@ -396,7 +396,7 @@ Therefore, it takes O(6n/2) = O(n)
 This is because we get left-minimum and right-minimun distances recursively. <br>
 There are <b>no pairs within the (left or right) part</b> where the distance <b>is less than the minimum</b> (left, right). <br> 
 </details>
-![6points](https://i.stack.imgur.com/14Uv0.jpg)
+![6points](https://i.stack.imgur.com/14Uv0.jpg=300x)
 
 Therefore, it can be poosible to find cross-minimum distacne in linear time. <br>
     <span style="color:red">However</span>, **merging points by another axis-y** is necessary to remove candidates with six candidates in addition to partitioning by axis-x.
