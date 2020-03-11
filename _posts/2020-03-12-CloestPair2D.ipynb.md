@@ -140,7 +140,7 @@ However, the average time is $O(n)$
 
 Recursively find minimum distances of left and right part as follows.
 
-<img src="https://media.geeksforgeeks.org/wp-content/uploads/mindis.png" width=300>
+![2D cloest algotihem](https://media.geeksforgeeks.org/wp-content/uploads/mindis.png)
 
 <div class="prompt input_prompt">
 In&nbsp;[4]:
@@ -387,7 +387,7 @@ plt.show()
 Please note that following facts.
    1. The points are <b>partitioned by mid-point</b> along the axis-x since the algorithm uses a quick selection algorithm by axis-x.<br>
    2. We already know d=min(left, right), so pruning can be possible by only seeing points <b>within the strip</b>.<br> 
-   <img src="https://media.geeksforgeeks.org/wp-content/uploads/closepair.png" width=300 align='center'> 
+   ![closep](https://media.geeksforgeeks.org/wp-content/uploads/closepair.png)
 
    3. There are up to <span style="color:red"><b>6 points</b></span> on the opposite side with a distance less than the minimum distance. <br> 
 
@@ -395,8 +395,8 @@ Therefore, it takes O(6n/2) = O(n)
 <details>
 This is because we get left-minimum and right-minimun distances recursively. <br>
 There are <b>no pairs within the (left or right) part</b> where the distance <b>is less than the minimum</b> (left, right). <br> 
-<img src="https://i.stack.imgur.com/14Uv0.jpg" width=300>
 </details>
+![6points](https://i.stack.imgur.com/14Uv0.jpg)
 
 Therefore, it can be poosible to find cross-minimum distacne in linear time. <br>
     <span style="color:red">However</span>, **merging points by another axis-y** is necessary to remove candidates with six candidates in addition to partitioning by axis-x.
