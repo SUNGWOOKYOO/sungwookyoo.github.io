@@ -145,6 +145,60 @@ ans: 27, time: 1.971ms
 
 ```
 
+## Topdown
+
+topdown approach is almost same.
+
+```python
+def solve(words):
+    word2idx = {w: i for i, w in enumerate(words)}
+    alpha2idx = lambda x: ord(x) - ord('a')
+    global ans, step, num_step
+    ans, step, num_step = 0, 0, 2 ** len(words)
+
+    def updatecnt(i, old):
+        """ update counter using words[i] """
+        new = [0, ] * 26
+        for j in range(26):
+            new[j] = old[j]
+        for c in words[i]:
+            new[alpha2idx(c)] += 1
+
+        return tuple(new)
+
+    def check(counter):
+        """ check if all elements of counter is upper than 0. """
+        for e in counter:
+            if e <= 0:
+                return False
+        return True
+
+    def func(i, alpha2cnt, case):
+        """ alpha2cnt is i-th counter state. """
+        assert 0 <= i <= len(words), "index error! "
+        global ans, step, num_step
+        """ recursively forward call and visit all cases by storing alphabet-counter. """
+        # when visiting the checking point.(last index)
+        if i == len(words) - 1:  # base case
+            # print("word[{}], case={}, alpha2cnt={}".format(i, step, alpha2cnt))
+            step += 1
+            res = 1 if check(alpha2cnt) else 0
+            return res
+        """ note that only forward recursion, seen dictionary not needed."""
+        # words[i] not used recursion.
+        case1 = func(i + 1, alpha2cnt, case=1)
+        # used case recursion.
+        # before visiting update alphabet counter.
+        case2 = func(i + 1, updatecnt(i + 1, alpha2cnt), case=2)
+        return case1 + case2
+
+    # call first point index.
+    case1 = func(i=0, alpha2cnt=(0,) * 26, case=1)
+    case2 = func(i=0, alpha2cnt=updatecnt(0, (0,) * 26), case=2)
+    ans = case1 + case2
+    return ans
+``` 
+
 # Report 
 
 DFS를 연습하기 아주 좋은 문제였다. <br>
@@ -168,3 +222,4 @@ DFS를 연습하기 아주 좋은 문제였다. <br>
 결국엔, alphabet 셋이 모두 있는지 확인 하려면 depth 끝까지 recursion해야하고, prunning되는 것들이 하나도 없어 모든 cases를 enumerate하게 된다. 
 
 이 문제를 `Target Set`문제라고 생각할수 있을 거 같다.
+
