@@ -107,7 +107,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "Sungwook Yoo"
+  name             : "Sungwook Yoo, Sewook Yoo"
   avatar           : /assets/images/mimi.jpg # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "No sweat, no sweet"
   location         : "Somewhere, Korea"
@@ -125,12 +125,16 @@ author:
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
-    - label: "GitHub"
+    - label: "GitHub1"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/SUNGWOOKYOO"
+    - label: "GitHub2"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/Usaywook"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
+
 
 # Site Footer
 footer:
