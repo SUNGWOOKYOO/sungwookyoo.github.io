@@ -173,7 +173,7 @@ def solve(words):
                 return False
         return True
 
-    def func(i, alpha2cnt, case):
+    def func(i, alpha2cnt):
         """ alpha2cnt is i-th counter state. """
         assert 0 <= i <= len(words), "index error! "
         global ans, step, num_step
@@ -186,15 +186,15 @@ def solve(words):
             return res
         """ note that only forward recursion, seen dictionary not needed."""
         # words[i] not used recursion.
-        case1 = func(i + 1, alpha2cnt, case=1)
+        case1 = func(i + 1, alpha2cnt)
         # used case recursion.
         # before visiting update alphabet counter.
-        case2 = func(i + 1, updatecnt(i + 1, alpha2cnt), case=2)
+        case2 = func(i + 1, updatecnt(i + 1, alpha2cnt))
         return case1 + case2
 
     # call first point index.
-    case1 = func(i=0, alpha2cnt=(0,) * 26, case=1)
-    case2 = func(i=0, alpha2cnt=updatecnt(0, (0,) * 26), case=2)
+    case1 = func(i=0, alpha2cnt=(0,) * 26)
+    case2 = func(i=0, alpha2cnt=updatecnt(0, (0,) * 26))
     ans = case1 + case2
     return ans
 ``` 
