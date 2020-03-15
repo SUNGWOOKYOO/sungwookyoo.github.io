@@ -47,7 +47,7 @@ $ O(2^n) $
    
 Please see the detailed explanation as follows.
 
-![](./images/TargetSum.PNG){:width="300"}
+![](assets/images/algorithms/TargetSum.PNG){:width="300"}
 
 Therefore, the Time complexity becomes
 $ O(nL)$
