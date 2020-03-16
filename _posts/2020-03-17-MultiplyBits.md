@@ -1,5 +1,5 @@
 ---
-title: "Binary Multiplication using python - Divide Conquer"
+title: "Karatsuba Algrithm forr Binary Multiplication using python - Divide and Conquer"
 excerpt: "given two binary values, multiply efficiently."
 categories:
  - algorithms
