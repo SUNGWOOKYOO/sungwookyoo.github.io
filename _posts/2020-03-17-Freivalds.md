@@ -234,7 +234,7 @@ How can this algorithm do that? <br>
 
 **Let's prove why is algorithm's $P[error] \le 1/2$**. <br>
 * Case 1: $\textbf{A}\textbf{B} = \textbf{C}$ <br>
-     **If one of elements among $\textbf{A}\textbf{B}\textbf{r} - \textbf{C}\textbf{r}$ exists, it is error.** <span style="color:red">**However**, this case is not going to be happended.</span><br>
+     **If a non-zero element exist in the result of $\textbf{A}\textbf{B}\textbf{r} - \textbf{C}\textbf{r}$, it is error.** <span style="color:red">**However**, this case is not going to be happended.</span><br>
      This is because <br>
      $\textbf{A}\textbf{B}\textbf{r} - \textbf{C}\textbf{r}$ always $\begin{bmatrix} 0 ...0 \end{bmatrix}$. <br> 
      Therefore, error cases never happen, so $P[error]$ = 0
