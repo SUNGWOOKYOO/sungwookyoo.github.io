@@ -1,5 +1,5 @@
 ---
-title: "Karatsuba Algrithm for Binary Multiplication using python - Divide and Conquer"
+title: "Karatsuba Algorithm for Binary Multiplication using python - Divide and Conquer"
 excerpt: "given two binary values, multiply efficiently."
 categories:
  - algorithms
@@ -248,7 +248,7 @@ $$
     & (x_l y_r + x_r y_l) = [(x_l + x_r)(y_l + y_r) - x_l y_l - x_r y_r]
     \end{align}
     $$
-        simply by reusing $x_l y_l, x_r y_r$, the algorithm complexity is reduced.
+        by reusing $x_l y_l, x_r y_r$, the algorithm complexity is reduced.
     $$
     \begin{align}
     &T(n) = 3T(n/2) + O(n) = O(n^{log_23})
@@ -313,7 +313,7 @@ $$
 $$
 
 For the efficient computation, I implemented output as a integer value instead of string, binary value. <br>
-Please note that a simple computation of binomial operation of integer in python as follows.
+Please note that a simple computation of binary operation of integer in python as follows.
 
 
 <div class="prompt input_prompt">
