@@ -138,8 +138,8 @@ In our toy example above, we can notice the intuition. <br>
 when $\textbf{r} = \begin{bmatrix} 1\\ 1 \end{bmatrix}$,  $\textbf{A}\textbf{B}\textbf{r} - \textbf{C}\textbf{r} = \begin{bmatrix} 0\\ 0 \end{bmatrix}$. <br>
 However, when $\textbf{r} = \begin{bmatrix} 1\\ 0 \end{bmatrix}$,  $\textbf{A}\textbf{B}\textbf{r} - \textbf{C}\textbf{r} = \begin{bmatrix} -1\\ -1 \end{bmatrix}$. <br>
 
-Among cases of $\textbf{r} =$ ($\begin{bmatrix} 0\\ 0 \end{bmatrix}, \begin{bmatrix} 1\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 1 \end{bmatrix}, \begin{bmatrix} 1\\ 1 \end{bmatrix}$), the cases ($\begin{bmatrix} 0\\ 0 \end{bmatrix}, \begin{bmatrix} 1\\ 1 \end{bmatrix}$) leads to $\begin{bmatrix} 0\\ 0 \end{bmatrix}$. <br>
-which means, **1/2 cases leads to non-zeros vector, which is the error probability**. <br>
+Among cases of $\textbf{r} =$ ($\begin{bmatrix} 0\\ 0 \end{bmatrix}, \begin{bmatrix} 1\\ 0 \end{bmatrix}, \begin{bmatrix} 0\\ 1 \end{bmatrix}, \begin{bmatrix} 1\\ 1 \end{bmatrix}$), the cases ($\begin{bmatrix} 0\\ 0 \end{bmatrix}, \begin{bmatrix} 1\\ 1 \end{bmatrix}$) lead to $\begin{bmatrix} 0\\ 0 \end{bmatrix}$. <br>
+which means, **1/2 cases lead to non-zeros vector, which is the error probability**. <br>
 We can notice that the <span style="color:red">result is `True` only when $\textbf{A}\textbf{B}\textbf{r} - \textbf{C}\textbf{r} = \begin{bmatrix} 0\\ 0 \end{bmatrix}$ ,$\forall \textbf{r}$.</span>  <br>
 
 ### Time Complexity
