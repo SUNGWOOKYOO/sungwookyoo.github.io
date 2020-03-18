@@ -21,7 +21,7 @@ header:
 
 (Divide-and-conquer) The picture below shows an oil field with $m$ by $n$ cells. Assume that $n$ is a power of $2$ (i.e., $n = 2k$). The number in each cell is the amount of oil in the cell. We want to build two towers and drills to pump out oil. The input is given as an array `A[1...m][1...n]`. We can pump out oil from the cells the drill goes through and cells between the end of two drills. The drills must be the same depth. The cost is the number of cells from which we pump oil out. <span style="color:red">**The benefit** is the amount of the oil pumped out minus the cost</span>. For example, the benefit in the picture is `(0 + 4 + 4 + 0 + 5 + 0 + 4) − 7 = 10`
 
-![](assets/images/algorithms/pumpingoil.PNG){:width="300"}
+![](/assets/images/algorithms/pumpingoil.PNG){:width="300"}
 
 ## Divide and Conquer
 
