@@ -98,22 +98,24 @@ normal 분포의 경우 sampling을 했을 때 특정 구간을 벗어나는 경
 ## Numerical KL divergence of gaussian distribution
 
 $$
-D_{KL}(p||q) = -\int p(x)\log{\frac{p(x)}{q(x)}} \\
-= \log{\frac{\sigma_2}{\sigma_1}} + \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{2\sigma_2^2} - \frac{1}{2}\\
+\begin{align}
+D_{KL}(p||q) &= -\int p(x)\log{\frac{p(x)}{q(x)}} \\
+&= \log{\frac{\sigma_2}{\sigma_1}} + \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{2\sigma_2^2} - \frac{1}{2}\\
+\end{align}
 $$
-when 1st distribution is standard normal
+when 1st distribution is standard normal,  $\mu_1 = 0,\sigma_1 = 1$
 
 $$
-\mu_1 = 0 \\ 
-\sigma_1 = 1 \\   
-D_{KL}(p=N(0,1)||q) \approx \frac{1}{2n}\sum_{i=1}^n(\frac{\mu_{2i}^2 + 1}{\sigma_{2i}^2} + \log\sigma_{2i}^2 - 1)
+\begin{align}
+D_{KL}(p=N(0,1)||q) & \approx \frac{1}{2n}\sum_{i=1}^n(\frac{\mu_{2i}^2 + 1}{\sigma_{2i}^2} + \log\sigma_{2i}^2 - 1)
+\end{align}
 $$
 
-when 2nd distribution is standard normal
+when 2nd distribution is standard normal, $\mu_2 = 0,\sigma_2 = 1$
 $$
-\mu_2 = 0 \\
-\sigma_2 = 1 \\   
-D_{KL}(p||q=N(0,1)) \approx \frac{1}{2n}\sum_{i=1}^n(\mu_{1i}^2 + \sigma_{1i}^2 - \log\sigma_{1i}^2 - 1)
+\begin{align}
+D_{KL}(p||q=N(0,1)) & \approx \frac{1}{2n}\sum_{i=1}^n(\mu_{1i}^2 + \sigma_{1i}^2 - \log\sigma_{1i}^2 - 1)
+\end{align}
 $$
 
 <div class="prompt input_prompt">
@@ -203,7 +205,7 @@ mean을 바꾸면 bias가 달라지고
 variance를 바꾸면 결정적인 정도가 바뀐다. 
 bias를 바꾸면 당연히 kl divergence가 증가 하겠지만  
 초록색과 파랑색처럼 결정적인 정도를 가지고 두 분포를 비교할 때 문제가 발생한다.  
-  
+
 역방향 kl divergence는 mode seeking이므로   
 노랑색이 0인 부분에서 파랑색이 존재한다면 큰 panalty를 부여한다.  
 그래서 아래의 그래프를 보자.  
@@ -297,10 +299,12 @@ forward kl divergence를 사용하면 불리하게 작용할 수 있다.
 
 ## Numerical loglikelihood of gaussian distribution
 $$
+\begin{align}
 \sum_{i=1}^{n}\ln f(x_i | \mu, \sigma^2) 
-= -\frac{1}{2}(n\ln{2\pi} + n\ln{\sigma^2} + \sum_{i=1}^{n}\frac{(x_i - \mu)^2}{\sigma^2}) \\
-\approx -\frac{1}{2n}\sum_{i=1}^{n}(\ln{\sigma_i^2} + \frac{x_i - \mu_i}{\sigma_i^2})
-$$ 
+&= -\frac{1}{2}(n\ln{2\pi} + n\ln{\sigma^2} + \sum_{i=1}^{n}\frac{(x_i - \mu)^2}{\sigma^2}) \\
+& \approx -\frac{1}{2n}\sum_{i=1}^{n}(\ln{\sigma_i^2} + \frac{x_i - \mu_i}{\sigma_i^2})
+\end{align}
+$$
 
 보통 loglikelihood는 관측값만 있을때  
 그 관측값을 사용해서 특정 분포라는 가정을 하고  
@@ -428,34 +432,50 @@ kl disvergence의 reverse방향과 유사하다는 것을 알 수 있다.
 ## Beta distribution
 beta function은 다들 익숙하지 않아서 이론적 배경은 간략하게 나마 설명하고 간다.
 ### pdf of beta distribution
-$$ 
-f(x;\alpha,\beta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha -1}(1-x)^{\beta-1} \\
-= \frac{1}{B(\alpha,\beta)}x^{\alpha -1}(1-x)^{\beta-1}
+$$
+\begin{align}
+f(x;\alpha,\beta) &= \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha -1}(1-x)^{\beta-1} \\
+&= \frac{1}{B(\alpha,\beta)}x^{\alpha -1}(1-x)^{\beta-1}
+\end{align}
 $$
 ### beta function
 여기서 beta function은 normalization constant를 의미한다.
 $$
+\begin{align}
 B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}
+\end{align}
 $$
 ### disgamma function
 그리고 digamma function은 gamma function에 대한 logarithmatic derivative로 
 계산적 용이성을 위해서 정의한 함수이다.  
 [wikipedia](https://en.wikipedia.org/wiki/Beta_distribution)를 참고바란다.
 $$
+\begin{align}
  \psi(\alpha) = \frac{d\ln{\Gamma(\alpha)}}{d\alpha}
+\end{align}
 $$
 ## Numerical KL divergence of beta distribution
 $$
-D_{KL}(X_1 || X_2) = \int_0^1 f(x;\alpha_1,\beta_1) ln (\frac{f(x;\alpha_1,\beta_1)}{f(x;\alpha_2,\beta_2)}) dx \\
-= \ln(\frac{B(\alpha_2,\beta_2)}{B(\alpha_1,\beta_1)}) 
-+ (\alpha_1 - \alpha_2) \psi(\alpha_1) 
-+ (\beta_1 - \beta_2) \psi(\beta_1)
-+ (\alpha_2 - \alpha_1 + \beta_2 - \beta_1)\psi(\alpha_1 + \beta_1)  \\
+\begin{align}
+D_{KL}(X_1 || X_2) 
+&= \int_0^1 f(x;\alpha_1,\beta_1) \ln(\frac{f(x;\alpha_1,\beta_1)}{f(x;\alpha_2,\beta_2)}) dx \\
+&= \ln(\frac{B(\alpha_2,\beta_2)}{B(\alpha_1,\beta_1)} +
+(\alpha_1 - \alpha_2) \psi(\alpha_1) +
+(\beta_1 - \beta_2) \psi(\beta_1) +
+(\alpha_2 - \alpha_1 + \beta_2 - \beta_1)\psi(\alpha_1 + \beta_1)\\
+&= \ln(\frac{B(\alpha_2,\beta_2)}{B(\alpha_1,\beta_1)} +
+(\alpha_1 - \alpha_2) \psi(\alpha_1)+
+(\beta_1 - \beta_2) \psi(\beta_1)+ 
+(\alpha_2 - \alpha_1 + \beta_2 - \beta_1)\psi(\alpha_1 + \beta_1)\\
+\end{align}
+$$
+
+$$
 \therefore D_{KL}(X_1 || X_2) \approx \frac{1}{n}\sum_{i-1}^{n}[
-\ln(\frac{B(\alpha_{2i},\beta_{2i})}{B(\alpha_{1i},\beta_{1i})}) 
-+ (\alpha_{1i} - \alpha_{2i}) \psi(\alpha_{1i}) 
-+ (\beta_{1i} - \beta_{2i}) \psi(\beta_{1i})
-+ (\alpha_{2i} - \alpha_{1i} + \beta_{2i} - \beta_{1i})\psi(\alpha_{1i} + \beta_{1i})]
+\ln(\frac{B(\alpha_{2i},\beta_{2i})}{B(\alpha_{1i},\beta_{1i})}) +
+ (\alpha_{1i} - \alpha_{2i}) \psi(\alpha_{1i})+
+ (\beta_{1i} - \beta_{2i}) \psi(\beta_{1i})+
+ (\alpha_{2i} - \alpha_{1i} + \beta_{2i} - \beta_{1i})\psi(\alpha_{1i} + \beta_{1i})]
 $$
 
 <div class="prompt input_prompt">
@@ -576,11 +596,11 @@ deterministic kl divergence :  0.731431373458168
 
 
 그래프를 보면 normal 분포와 확연히 다른 부분이 있다.  
-  
+
 1. kl divergence그래프가 순방향 역방향 스케일만 다를 뿐 비슷산 양상을 보인다.  
 2. 순방향 역방향 모두 stochastic 할 때 값이 더 작다.  
 3. normal 분포의 kl divergence 와 비교하여 값의 스케일이 약 10배 정도 차이난다.  
-  
+
 3번의 특징 때문에 만약 normal 분포의 kl divergence로 loss function을 만들었던 부분을  
 beta 분포의 kl divergence로 바꾼다면 상수를 <span style="color:red">10배정도 늘려 주는 것</span>이 좋을 것으로 예상된다.
 
@@ -658,13 +678,15 @@ plt.legend()
 
 ## Numerical loglikelihood of beta distribution
 $$
-\sum_{i=1}^{n}\ln{f(X_i|\alpha, \beta)} 
-= (\alpha - 1) \sum_{i=1}^{n}\ln{x_i} 
-+ (\beta- 1) \sum_{i=1}^{n}\ln{(1 - x_i)}
-- n\ln{B(\alpha, \beta)} \\
-= \frac{1}{n}\sum_{i=1}^{n} [(\alpha_i - 1)\ln{x_i} 
-+ (\beta_i- 1) \ln{(1 - x_i)} 
-- \ln{B(\alpha_i, \beta_i)}]
+\begin{align}
+\sum_{i=1}^{n}\ln{f(X_i|\alpha, \beta)}
+&= (\alpha - 1) \sum_{i=1}^{n}\ln{x_i}+
+ (\beta- 1) \sum_{i=1}^{n}\ln{(1 - x_i)}-
+ n\ln{B(\alpha, \beta)}\\
+&= \frac{1}{n}\sum_{i=1}^{n} [(\alpha_i - 1)\ln{x_i}+
+ (\beta_i- 1) \ln{(1 - x_i)}-
+ \ln{B(\alpha_i, \beta_i)}]
+\end{align}
 $$
 
 <div class="prompt input_prompt">
