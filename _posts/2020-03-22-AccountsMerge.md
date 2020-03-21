@@ -68,7 +68,7 @@ pprint(accounts)
 
 ## Objective
 merge all emails if some emails from same account exist.
-> accounts 에는 각각의 user와 user가 가자고 있는 email 주소 리스트가 주어진다. <br>
+> accounts 에는 각각의 user와 user가 가지고 있는 email 주소 리스트가 주어진다. <br>
 이때, 만약 user A와 user B가 동일한 유저라면(가지고 있는 email list중 하나라도 똑같은게 있다면) emails list들을 merge 할 수 있다.
 모든 accounts에 주어진 emails들을 merge 하고, 사전순으로 sort하자.
 
