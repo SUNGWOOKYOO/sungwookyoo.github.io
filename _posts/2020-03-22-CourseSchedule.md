@@ -1,5 +1,5 @@
 ---
-title: "207. Course Schedule"
+title: "207.Course Schedule"
 excerpt: "KEY: using BFS or DFS, detect cycles in a graph"
 categories:
  - algorithms
