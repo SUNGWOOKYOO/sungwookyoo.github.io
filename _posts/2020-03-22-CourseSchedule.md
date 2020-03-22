@@ -1,5 +1,5 @@
 ---
-title: "207.Course Schedule"
+title: "Course Schedule - leetcode 207 and 210 using python"
 excerpt: "KEY: using BFS or DFS, detect cycles in a graph"
 categories:
  - algorithms
@@ -35,7 +35,7 @@ Using topological sort by DFS or BFS, checking cycles is possible. See [this pos
 ## Use DFS
 
 <div class="prompt input_prompt">
-In&nbsp;[1]:
+In&nbsp;[7]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -82,15 +82,8 @@ class Solution(object):
 
 </div>
 
-{:.output_stream}
-
-```
-True
-
-```
-
 <div class="prompt input_prompt">
-In&nbsp;[3]:
+In&nbsp;[8]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -174,3 +167,143 @@ print(sol.canFinish(numCourses, prerequisites))
 True
 
 ```
+
+# 210. Course Schedule II
+
+## DFS
+
+<div class="prompt input_prompt">
+In&nbsp;[11]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+from collections import defaultdict
+class Solution(object):
+    def __init__(self):
+        self.isDAG = True
+    def findOrder(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: List[int]
+        """
+        adj = defaultdict(list)
+        for i, j in prerequisites:
+            adj[j].append(i)
+        seen = [False]*numCourses
+        finish = [False]*numCourses
+        topo = []
+        def dfs(i):
+            seen[i] = True
+            for j in adj[i]:
+                if not seen[j]:
+                    dfs(j)
+                elif not finish[j]:
+                    self.isDAG = False
+            finish[i] = True
+            topo.append(i)
+        for i in range(numCourses):
+            if not seen[i]:
+                dfs(i)
+        if not self.isDAG:
+            return []
+        else:
+            return topo[::-1]
+
+sol = Solution()
+```
+
+</div>
+
+<div class="prompt input_prompt">
+In&nbsp;[12]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+sol.findOrder(numCourses, prerequisites)
+```
+
+</div>
+
+
+
+
+{:.output_data_text}
+
+```
+[1, 0]
+```
+
+
+
+## BFS
+
+<div class="prompt input_prompt">
+In&nbsp;[13]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+from collections import defaultdict, deque
+class Solution(object):
+    def __init__(self):
+        self.isDAG = True
+    def findOrder(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: List[int]
+        """
+        adj = defaultdict(list)
+        indegree = [0]* numCourses
+        for i, j in prerequisites:
+            adj[j].append(i)
+            indegree[i] += 1
+        
+        st = [i for i in range(numCourses) if indegree[i] == 0]    
+        queue = deque(st)
+        cnt, topo = 0, []
+        while queue:
+            i = queue.popleft()
+            topo.append(i)
+            for j in adj[i]:
+                indegree[j] -= 1
+                if indegree[j] == 0:
+                    queue.append(j)
+            cnt += 1
+        
+        if cnt != numCourses:
+            return []
+        else:
+            return topo
+```
+
+</div>
+
+<div class="prompt input_prompt">
+In&nbsp;[14]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+sol.findOrder(numCourses, prerequisites)
+```
+
+</div>
+
+
+
+
+{:.output_data_text}
+
+```
+[1, 0]
+```
+
+
