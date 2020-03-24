@@ -15,10 +15,10 @@ toc_icon: "cog"
 header:
 overlay_image: /assets/images/algorithms/algo.png
 overlay_filter: 0.5
- caption: algorithms
- actions:
-  - label: "leetcode"
-    url: "https://leetcode.com/problems/pacific-atlantic-water-flow"
+caption: algorithms
+actions:
+ - label: "leetcode"
+   url: "https://leetcode.com/problems/pacific-atlantic-water-flow"
 ---
 
 <div class="prompt input_prompt">
