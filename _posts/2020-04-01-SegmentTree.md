@@ -100,8 +100,7 @@ def buildseg(a):
 
 </div>
 
-<!-- ![](https://media.geeksforgeeks.org/wp-content/cdn-uploads/segment-tree1.png){:width="300"} -->
-<img src=https://media.geeksforgeeks.org/wp-content/cdn-uploads/segment-tree1.png width="300">
+![](https://media.geeksforgeeks.org/wp-content/cdn-uploads/segment-tree1.png){:width="300"}
 
 <div class="prompt input_prompt">
 In&nbsp;[4]:
@@ -248,7 +247,7 @@ sum[205714..247716]=422381, gt=422381
 ## Update 
 
 recall this figure below <br>
-<img src=https://media.geeksforgeeks.org/wp-content/cdn-uploads/segment-tree1.png width="300">
+![](https://media.geeksforgeeks.org/wp-content/cdn-uploads/segment-tree1.png){:width="300"}
 
 $$
 T(n) = T(n/2) + O(1) = O(logn)
