@@ -38,6 +38,7 @@ $m \le 2n - 1$ 이다. $\because$ $n$ 번 makeset하고, 최악의 경우 union 
 따라서, DisjointSet을 구성하는데 걸리는 시간은 최악의 경우 
 * $n$번의 MakeSet, $O(n)$
 * $n - 1$번의 Union, $O(n^2)$ $\because$ Find 연산의 최악의 경우 $O(n)$
+따라서, 다음과 같은 시간이 걸린다.
 $$
 O(n^2)
 $$
