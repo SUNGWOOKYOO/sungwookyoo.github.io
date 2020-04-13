@@ -1,5 +1,5 @@
 ---
-title: "1023. Camelcase Matching Leetcode using python"
+title: "1023.Camelcase Matching Leetcode using python"
 excerpt: "Trie datastructure practice"
 categories:
  - algorithms
