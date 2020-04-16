@@ -47,7 +47,7 @@ encoder에서 다음 그림과 같이 context vector를 decoder에게 넘겨줄�
 
 | overview             |  pytorch implementation |
 | -------------------- | ----------------------- |
-|<img src="https://pytorch.org/tutorials/_images/seq2seq.png" width=300> | <img src="https://pytorch.org/tutorials/_images/decoder-network.png" width=160> |
+|<img src="https://pytorch.org/tutorials/_images/seq2seq.png" width="300"> | <img src="https://pytorch.org/tutorials/_images/decoder-network.png" width="160"> |
 
 ```python
 class DecoderRNN(nn.Module):
@@ -88,7 +88,7 @@ decoder에서 contect vector를 모두 같은 것을 쓰거나 단순히 전파�
 
 | overview | animation   |  pytorch implementation |
 | -------- | -------------------- | ----------------------- |
-|<img src="https://i.imgur.com/4zdzDKL.png" width="200">| <img src="https://miro.medium.com/max/875/1*wBHsGZ-BdmTKS7b-BtkqFQ.gif" width=300>  |  <img src="https://pytorch.org/tutorials/_images/attention-decoder-network.png" width=180> |
+|<img src="https://i.imgur.com/4zdzDKL.png" width="200">| <img src="https://miro.medium.com/max/875/1*wBHsGZ-BdmTKS7b-BtkqFQ.gif" width="300">  |  <img src="https://pytorch.org/tutorials/_images/attention-decoder-network.png" width="180"> |
 
 ```python
 class AttnDecoderRNN(nn.Module):
@@ -131,7 +131,7 @@ class AttnDecoderRNN(nn.Module):
 ## Family of Attention Mechanism
 
 <!-- ![](https://miro.medium.com/max/875/1*oosK1XGaYr0AoSxfs9fx5A.png) -->
-<img src="https://miro.medium.com/max/875/1*oosK1XGaYr0AoSxfs9fx5A.png" width=400>
+<img src="https://miro.medium.com/max/875/1*oosK1XGaYr0AoSxfs9fx5A.png" width="400">
 
 $e_{ij} = align(s_{i-1}, h_j)$를 계산하는 alignment model은 여러 Family 가 있다. <br>
 notation을 간결화 하기위해 $i-1$을 $t$로 치환하여 정리
@@ -159,13 +159,13 @@ notation을 간결화 하기위해 $i-1$을 $t$로 치환하여 정리
 | cross                                    | self(or intra)                                               |
 | ---------------------------------------- | ------------------------------------------------------------ |
 | works on different sequence              | relate different positions of single sequence to compute its representation |
-| <img src="/assets/images/attention_files/cross.PNG" width=200> | <img src="/assets/images/attention_files/self.PNG" width=200>                      |
+| <img src="/assets/images/attention_files/cross.PNG" width="200"> | <img src="/assets/images/attention_files/self.PNG" width="200">                      |
 
 ### Soft vs Hard
 [3]에서 기본적 아이디어 제안 됨.
 [3]은 image captioning을 목표로 하며 attention 구조 및 모델 overview는 다음과 같다.
 
-<img src="/assets/images/attention_files/ImageCaptioning2.PNG" width=250>
+<img src="/assets/images/attention_files/ImageCaptioning2.PNG" width="250">
 
 [3]은 번역 문제가 아니라서 notation이 약간 다르다. 헷갈릴 수 있으니 정리하겠다.
 
@@ -181,7 +181,7 @@ notation을 간결화 하기위해 $i-1$을 $t$로 치환하여 정리
 | soft: deterministic                                   | hard: stochastic                                             |
 | ------------------------------------------------------| ------------------------------------------------------------ |
 | 모든 alignment vector를 반영하여 weight average        | alignment vector값으로 확률적으로 샘플링                      |
-|<img src="https://heuritech.files.wordpress.com/2016/01/detail_attentionmodel1.png?w=470" width=300> | <img src="https://heuritech.files.wordpress.com/2016/01/detail_attentionmodel_hardattention.png?w=681&h=476" width=300> |
+|<img src="https://heuritech.files.wordpress.com/2016/01/detail_attentionmodel1.png?w=470" width="300"> | <img src="https://heuritech.files.wordpress.com/2016/01/detail_attentionmodel_hardattention.png?w=681&h=476" width="300"> |
 
 | *       | soft                                         | hard                                             |
 | ------- | -------------------------------------------- | ------------------------------------------------ |
@@ -194,7 +194,7 @@ notation을 간결화 하기위해 $i-1$을 $t$로 치환하여 정리
 
 | global                                                       | local                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img src="https://raw.githubusercontent.com/q0115643/my_blog/master/assets/images/paper-summary/Luong-EMNLP2015/2.png" width=400> | <img src="https://raw.githubusercontent.com/q0115643/my_blog/master/assets/images/paper-summary/Luong-EMNLP2015/3.png" width=250> |
+| <img src="https://raw.githubusercontent.com/q0115643/my_blog/master/assets/images/paper-summary/Luong-EMNLP2015/2.png" width="400"> | <img src="https://raw.githubusercontent.com/q0115643/my_blog/master/assets/images/paper-summary/Luong-EMNLP2015/3.png" width="250"> |
 | to generate a target word, consider all source words <br>basically soft attention | to generate a target word, first predicts a source word position <br> use a window around this position to compute the target word <br>blend of soft and hard (to make hard attention differentiable) |
 | 근본적으로 global                                            | alignment vector들을 구할 기준이 되는 position을 샘플링하는게 아니라 예측함으로써 미분가능해지며, 에측한 위치에서 window 크기 내에 들어오는 source word 들을 고려하여 alignment vectors를 만들고 aggregate해서 context vector를 만든다. |
 
@@ -204,7 +204,7 @@ soft max 와 global 의 구현 차이
 
 | soft                                                         | global                                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img src="https://miro.medium.com/max/1400/1*IoNs3pdgl57_HqRXufZ0lA.png" width=570> | <img src="https://miro.medium.com/max/1400/1*ICeT6bTWmzUaGQkpKWVnLQ.png" width=500> |
+| <img src="https://miro.medium.com/max/1400/1*IoNs3pdgl57_HqRXufZ0lA.png" width="570"> | <img src="https://miro.medium.com/max/1400/1*ICeT6bTWmzUaGQkpKWVnLQ.png" width="500"> |
 | [Bahdanau, ICLR'15](https://arxiv.org/abs/1409.0473)         | [Luong, EMNLP'15](https://arxiv.org/abs/1508.04025)          |
 | decoder GRU, encoder는 BiGRU 사용                            | LSTM 사용                                                    |
 | alignment model: Scaled Dot-Product                          | Scaled Dot-Product, General, Dot-Product 실험                |
@@ -214,7 +214,7 @@ soft max 와 global 의 구현 차이
 
 다음 그림과 같이 key, query, value 로 설명가능하다. 
 
-<img src="/assets/images/attention_files/keyvalue.PNG" width=450>
+<img src="/assets/images/attention_files/keyvalue.PNG" width="450">
 
 간략히 설명 하면 다음과 같다. 
 
@@ -228,7 +228,7 @@ soft max 와 global 의 구현 차이
 다음 그림처럼 query, key를 바탕으로 alignment vector 를 구하고(scaled dot product방식) value에 적용하므로써 context vector를 구한다.
 그림과 같이 계산하려면 제약사항은 $d_k = d_q$ 이어야 hadamard product가 가능하다.
 
-<img src="/assets/images/attention_files/scaled_attention.png" width=200>
+<img src="/assets/images/attention_files/scaled_attention.png" width="200">
 
 
 ### Multi-Head 
@@ -236,7 +236,7 @@ soft max 와 global 의 구현 차이
 * 위와 같은 Key-Value Attention Mechanism을 효율적(병렬적)으로 하였다. 
 * Multi-Head를 사용하였다. 
 
-<img src="https://yjucho1.github.io/assets/img/2018-10-13/transformer.png" width=400>
+<img src="https://yjucho1.github.io/assets/img/2018-10-13/transformer.png" width="400">
 
 |LSTM| Transformer |
 | -- | ----------- |
