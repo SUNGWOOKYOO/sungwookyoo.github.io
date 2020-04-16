@@ -35,7 +35,7 @@ Attention Mechanism은 Neural Machine Translation, NMT 분야에서 Seq2seq(S2S)
 
 * context vector $c_{i}$는 $y_i$에 대한 input's hidden state에 대해 attention weights로 weight average된 벡터. <br>
 * attention weight $\alpha_{ij}$는 $e_{ij}$를 $j$축에 대해 softmax를 취한 값이며 $[0, 1]$의 확률값.
-* energy $e_{ij}$는 decoder의 cell이 $s_i$를 output하고 $y_i$를 예측할 때 쓰는 <span style=color:red>$s_{i-1}$가 encoder의 $h_j$와 얼마나 유사</span>한지 나타내는 scalar 값.
+* energy $e_{ij}$는 decoder의 cell이 $s_i$를 output하고 $y_i$를 예측할 때 쓰는 <span style="color:red">$s_{i-1}$가 encoder의 $h_j$와 얼마나 유사</span>한지 나타내는 scalar 값.
 
 ## Description 
 
