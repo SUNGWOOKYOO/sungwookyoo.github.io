@@ -2,7 +2,7 @@
 title: "Attention Mechanism Summary"
 excerpt: "Attention Mechanism Categorized"
 categories:
- - papers
+ - paper
 tags:
  - NLP
  - attention mechanism
