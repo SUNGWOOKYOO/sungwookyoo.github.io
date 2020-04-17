@@ -2,9 +2,9 @@
 title: "Transformer"
 excerpt: "global dependency를 잡아내고 횡방향으로 병렬 연산을 가능하게 하여 학습속도를 높인 RNN을 대체 가능한 attention model"
 categories:
- - paper
+ - papers
 tags:
- - attention
+ - attention mechanism
 use_math: true
 last_modified_at: "2020-03-15"
 toc: true
@@ -14,10 +14,6 @@ toc_icon: "cog"
 header:
  overlay_image: /assets/images/teaser.jpg
  overlay_filter: 0.5
- caption: #
- actions:
-  - label: "#"
-    url: "#"
 ---
 # Attention is all you need
 
