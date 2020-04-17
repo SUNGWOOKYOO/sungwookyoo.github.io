@@ -2,9 +2,9 @@
 title: "Implementation of Transformer - Tensorflow Tutorial Practice"
 excerpt: "Practice to Official Tutorial of Transformer"
 categories:
- - tutorials
+ - study
 tags:
- - attention
+ - attention mechanism
 use_math: true
 last_modified_at: "2020-03-24"
 toc: true
