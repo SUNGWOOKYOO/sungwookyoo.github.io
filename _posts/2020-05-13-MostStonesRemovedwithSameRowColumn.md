@@ -270,7 +270,7 @@ print(sol2.removeStones(stones, verbose=True, show=True))
 </div>
 
 
-![png](MostStonesRemovedwithSameRowColumn_files/MostStonesRemovedwithSameRowColumn_11_0.png)
+![png](/assets/images/MostStonesRemovedwithSameRowColumn_files/MostStonesRemovedwithSameRowColumn_11_0.png)
 
 
 {:.output_stream}
