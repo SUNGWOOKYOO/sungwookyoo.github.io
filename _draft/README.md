@@ -10,7 +10,7 @@ githubio 페이지에 렌더링 했을떄, 약 600정도사이즈로 하면 적�
 
 ## 텍스트
 ### color
-<span color="color:red"> TEXT </span>
+<span style="color:red"> TEXT </span>
 
 ### footnote
 jupyter notebook에서는 보이지 않지만, jekyll에 rendering하면 보인다. 
