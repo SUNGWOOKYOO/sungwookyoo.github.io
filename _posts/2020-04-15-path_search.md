@@ -290,10 +290,10 @@ plt.show()
 새로운 힙을 만들고 다시 하나씩 push하도록 동작한다. 즉 build heap이기 때문에 O(n)가 소요된다.  
 하지만 새로운 heap을 만들지 않고 그 구조차체를 변경하는 경우 O(log(n)) 이 소요된다.  
 그렇게 하기 위해서는 아래의 두가지를 고려해야 한다.  
-  
+
 > 1. 변경할 key의 index를 log n 시간안에 찾기.  
 > 2. heapify를 log n 시간안에 하기.  
-  
+
 첫번째는 변경할 위치의 key를 업데이트 하기 위해서 그 index를 찾아야한다. 
 hash table을 사용해서 노드의 key를 갖고있고 그것을 계속 업데이트 해주면된다.   
 두번째는 값을 올리는 경우 위로 heapify하고 값을 내리는 경우 아래로 heapify한다.  
@@ -572,7 +572,7 @@ def astar(G, pos, start, end):
                 
         # Pop current off open list, add to closed list
         open_list.pop(current_index)                
-        
+        closed_list.append(current_node)
         # Found the goal
         # Node 백트랙캉하면서 위치좌표를 path에 넣고 마지막에 path에 들어간 순서를 뒤집어서 순서대로 해줌
         if current_node == end_node:
@@ -602,21 +602,33 @@ def astar(G, pos, start, end):
 
             # Child is on the closed list
             # 경로설정이 완료된 노드는 통과
+            finished = False
             for closed_child in closed_list:
                 if child == closed_child:
-                    continue
+                    finished = True
+            if finished:
+                continue
 
             # Create the f, g, and h values
             child.g = current_node.g + 1
-            child.h = ((child.position[0] - end_node.position[0]) ** 2) + ((child.position[1] - end_node.position[1]) ** 2) # 연산량을 줄이기위해 루트연산을 할 필요없다.
+            child.h = math.sqrt(((child.position[0] - end_node.position[0]) ** 2) 
+                                + ((child.position[1] - end_node.position[1]) ** 2)) 
             child.f = child.g + child.h
 
             # Child is already in the open list
             # 인접한 노드들 중 탐색 중인 노드를 이전 값과 비교하여 g값이 update가 필요하다면 update
             # 이미 탐색중이므로 중복되서 open_list 에 들어갈 필요 없으니 continue로 넘김
+            is_exist = False
+            index = 0
             for open_node in open_list:
-                if child == open_node and child.g > open_node.g:
+                if child == open_node:
+                    is_exist =True
+                    index = i
+            if is_exist:
+                if child.g > open_list[index].g:
                     continue
+                # update open list
+                open_list.pop(index)
             # Add the child to the open list
             open_list.append(child)
             
