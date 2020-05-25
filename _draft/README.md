@@ -23,4 +23,5 @@ jupyter notebook에서는 보이지 않지만, jekyll에 rendering하면 보인�
 $\mathbb{R}$ 실수표현
 $\mathcal{V}$ 집합표현
 $\vert a  \verl$ abs(a)
-
+conditional distribution을 $p(x\|y)$ 로 써야 블로그에서 안깨짐
+\cancel{}을 사용하기위해서 \require{cancel}을 선언해 주어야함
