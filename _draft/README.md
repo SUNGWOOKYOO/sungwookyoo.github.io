@@ -25,3 +25,37 @@ $\mathcal{V}$ 집합표현
 $\vert a  \verl$ abs(a)
 conditional distribution을 $p(x\|y)$ 로 써야 블로그에서 안깨짐
 \cancel{}을 사용하기위해서 \require{cancel}을 선언해 주어야함
+
+
+## HTML
+### picture
+<figure>
+  <img src="address" width="300" title="#">
+  <figcaption> Fig1. </figcaption>
+</figure>
+
+### footnote 
+첨자 표현 <sub>[1]</sub>
+
+### conceal
+<details> <summary> </summary>
+내용이 들어간다.
+</details>
+
+### bullet
+점 불렛
+<ul>
+  <li> </ul>
+  <li> </ul>
+</ul>
+
+숫자 불렛
+<ol>
+  <li> </ul>
+  <li> </ul>
+</ol>
+
+
+
+
+
