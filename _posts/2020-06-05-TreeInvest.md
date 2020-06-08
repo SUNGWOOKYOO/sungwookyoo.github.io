@@ -7,6 +7,8 @@ tags:
  - datastructure
  - enumerate
  - deque
+ - simulation
+ - samsung
 use_math: true
 last_modified_at: "2020-06-05"
 toc: true

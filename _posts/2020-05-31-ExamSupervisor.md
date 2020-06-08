@@ -5,6 +5,7 @@ categories:
  - algorithms
 tags:
  - calculate
+ - samsung
 use_math: true
 last_modified_at: "2020-05-31"
 toc: true
