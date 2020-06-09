@@ -99,7 +99,7 @@ $$
 여기서 cost가 최적이라는 가정하에서 optimal q는  true cost function에 대한 demonstration distribution과 같다. 그래서 cost가 optimal distribution을 찾도록 guid 해주는 구조가 된다.   
 
 q는 cost를 energy function으로 모델링 했기에 해가  cost function에 대한 지수족이되고 아래의 식에 의해서 구해진다.
-  
+
 $$
 \begin{split}
 \mathcal{L}_{sampler}(q) &= D_{KL}(q(\tau) || \frac{1}{Z}e^{-c_{\theta}(\tau)}) \\ &\approx D_{KL}(q(\tau) || e^{-c_{\theta}(\tau)})\\
@@ -107,11 +107,11 @@ $$
 &= \mathbb{E}_{\tau \sim q}[c_{\theta}(\tau)] + \mathbb{E}_{\tau \sim q}[\log q(\tau)]
 \end{split}
 $$
-  
+
 위의 식은 현재학습하고 있는 cost function의 값을 줄이고 학습되는 분포의 entropy를 최대화 하도록 하는 방향으로 학습하자는 의미이다.  
 
 위의 식에서 문제점은 importance  sampling으로 인해 high variance가 발생한다는 점이다. 그래서 generated sample과 demo sample을 섞어서 mixture distribution $\mu = \frac{1}{2}\tilde{p}(\tau) + \frac{1}{2}q(\tau)$을 만들어 importance sampling을 하므로써 문제를 완화했다.  
-  
+
 $$
 \mathbb{E}_{\tau \sim p}[c_{\theta}(\tau)] + \log \bigg(\mathbb{E}_{\tau \sim \mu}[ \frac{e^{-c_{\theta}(\tau)}}{ \frac{1}{2}\tilde{p}(\tau) + \frac{1}{2}q(\tau)}]\bigg)
 $$
@@ -133,11 +133,11 @@ $$
 ### 3.1 A special form of discriminator
 
  $q(\tau)$를 generator의 분포라고하고 $p(\tau)$를 실제 data의 분포라고 할 때  optimal discriminator는 아래와 같다.
-  
+
 $$
 D^{*}(\tau) = \frac{p(\tau)}{p(\tau) + q(\tau)}
 $$
-  
+
 위의식은 실제 분포와 생성된 분포를 둘다 같은 확률인 1/2 로 판별할 때를 의미한다.  
 
  generator의 분포 $q(\tau)$를 알고 실제 data의 분포 $p(\tau)$를 모르는 상황에서 generator의 분포 $q(\tau)$ 를 evaluation하는 것이 우리의 목적이다. 그래서 data의 분포 $p(\tau)$ 를 모르는 우리는 energy function에 대한 bolzman 분포로 근사하여 문제를 풀면된다.   
@@ -149,7 +149,7 @@ D_{\theta}(\tau) &= \frac{\tilde{p}_{\theta}(\tau)}{\tilde{p}_{\theta}(\tau) + q
 &= \frac{1}{1 + e^{c_{\theta}(\tau) +\log q(\tau) + \log Z}}
 \end{split}
 $$
-  
+
  위의 식은 binary classification을 하는 sigmoid 식과 유사하며 의미적으로 생성된 샘플이 학습 데이터로 부터 판단하는 분류기의 의미를 지니고 있기 때문에 직관적으로 맞다.  input에서 $\log q(\tau)$ 를 빼고 sigmoid에 넣으면 cost function을 입력받아서 log Z를 bias 로하여 classification하는 식과 동일하고 optimal discrimator가 generator와 independent하게 동작하게 할 수 있다. 이 사실은 매우 중요한데 이유는 generator가 아직 학습이 덜되더라도 training 절차가 계속 일관되게 진행될 수 있기 때문이다. 따라서 우리는 generator의 분포 $q(\tau)$ 를 evaluation 하고자 할 때 data분포를 모르더라도 cheaply evaluation할 수 있고 training의 stability를 크게 향상시킬 수 있다. 
 
 ### 3.2 Equivalence between GAN and GCL
@@ -157,7 +157,7 @@ $$
  이번절에서 우리는 3.1 절에서 말한 GAN의 variant 가  sample based MaxEnt IRL 방법인 GCL과 정확히 일치한다는 것을 보일 것이다.  
 
 위해서 구한 discriminator의 variant를 Discriminator의 objective에 대입하고 GCL의 cost function objective에 대입하여 보자.  
-  
+
 $$
 \require{color}
 \begin{split}
@@ -167,19 +167,19 @@ $$
 &= \mathbb{E}_{\tau \sim p}[c_{\theta}(\tau)] + \log \bigg(\mathbb{E}_{\tau \sim \mu}[ \frac{e^{-c_{\theta}(\tau)}}{ \textcolor{red}{\frac{1}{2Z}e^{-c_{\theta}(\tau)}} + \frac{1}{2}q(\tau)}]\bigg)
 \end{split}
 $$
-  
+
  우리는 mixture 분포 $\mu(\tau) = \frac{1}{2}p(\tau) + \frac{1}{2}q(\tau)$ 를  정의했고, 진짜 분포 $p(\tau)$를 모르니까  $\theta$ 와 $Z$ 를 사용해서 mixture 분포를 $\mu(\tau) \approx \tilde{\mu}(\tau) = \textcolor{red}{\frac{1}{2}\tilde{p}(\tau)} + \frac{1}{2}q(\tau) = \textcolor{red}{\frac{1}{2Z}e^{-c_{\theta}(\tau)}} + \frac{1}{2}q(\tau)$ 로 근사한다.
-  
+
 아래와 같은 3가지 사실을 보이면된다.
 
 1. Discriminator의 loss를 최소화하는 Z는 partition function에 대한 importance sampling estimator이다.
 2. 위에서 구한 Z에 대해서 구한 discriminator의 loss의 $\theta$에 대한 편미분은 MaxEnt IRL의 편미분과 동일하다.
 3. Generator의 loss는 MaxEnt policy loss인 $c_{\theta} - H(q(\tau))$ 와 동일하다.
-  
+
 #### 3.2.1 Z estimates the partition function
-  
+
 discriminator의 loss의 Z에대한 최소점이 GCL에서 근사한 Z와 동일한지를 보이면 된다.  
-  
+
 $$
 \begin{split}
 \mathcal{L}_{discriminator}(D_{\theta})
@@ -189,9 +189,9 @@ $$
 &= \log Z + \mathbb{E}_{\tau \sim p}[c_{\theta}(\tau)] - \mathbb{E}_{\tau \sim q}[\log q(\tau)] +2 \mathbb{E}_{\tau \sim \textcolor{red}{\mu}}[\log \tilde{\mu}(\tau)]
 \end{split}
 $$
-  
+
 위의 식에서 Z에 dependent한 term은 첫째와 마지막 term이다. 따라서 Z에 대해 편미분하면 아래와 같다.  
-  
+
 $$
 \begin{split}
 \partial_{z}\mathcal{L}_{discriminator}(D_{\theta}) 
@@ -200,31 +200,35 @@ $$
 \therefore Z &= \mathbb{E}_{\tau \sim \mu}[ \frac{e^{-c_{\theta}(\tau)}}{\tilde{\mu}(\tau)}]
 \end{split}
 $$
-  
+
 따라서 GAN의 variant에서 discrimintor의 loss를 최적화 하는 Z가 GCL에서 Z인 partition function의 importance sampling estimation과 동일하다는 것을 보였다.
-  
+
 #### 3.2.2 $c_{\theta}$ optimizes the IRL objective
-  
+
 discriminator의 loss의 $\theta$ 에대한 최소점이 GCL의 cost objective와 동일한지를 보이면 된다.
-  
+
 $$
 \begin{split}
 \partial_{\theta}\mathcal{L}_{discriminator}(D_{\theta}) &= \mathbb{E}_{\tau \sim p}[\partial_{\theta}c_{\theta}(\tau)] +2 \mathbb{E}_{\tau \sim \mu}[\frac{\partial_{\theta}\tilde{\mu}(\tau)}{\tilde{\mu}(\tau)}] \\
 &= \mathbb{E}_{\tau \sim p}[\partial_{\theta}c_{\theta}(\tau)] - \mathbb{E}_{\tau \sim \mu}[\frac{\frac{1}{Z}e^{-c_{\theta}(\tau)}\partial_{\theta}c_{\theta}(\tau)}{\tilde{\mu}(\tau)}] 
 \end{split}
 $$
-  
+
 반면에 GCL의 cost 에 대한 objective의 미분값은 아래와 같다.  
-  
+
 $$
 \begin{split}
 \partial_{\theta}\mathcal{L}_{cost}(\theta) &= \mathbb{E}_{\tau \sim p}[\partial_{\theta}c_{\theta}(\tau)] + \partial_{\theta}\log \bigg(\mathbb{E}_{\tau \sim \mu}[ \frac{e^{-c_{\theta}(\tau)}}{\tilde{\mu}(\tau)}]\bigg) \\
 &= \mathbb{E}_{\tau \sim p}[\partial_{\theta}c_{\theta}(\tau)] + \frac{\partial_{\theta}\bigg( \mathbb{E}_{\tau \sim \mu}[ \frac{e^{-c_{\theta}(\tau)}}{\tilde{\mu}(\tau)}]\bigg)}{\mathbb{E}_{\tau \sim \mu}[ \frac{e^{-c_{\theta}(\tau)}}{\tilde{\mu}(\tau)}]}
 \end{split}
 $$
-  
-여기서 우리는 $\tilde{\mu}$ 와 $Z = \mathbb{E}_{\tau \sim \mu}[ \frac{e^{-c_{\theta}(\tau)}}{\tilde{\mu}(\tau)}]$ 를 상수 취급 한다.   IRL optimization에서 $Z$ 를 구하고 나서 그 값으로 mixture policy $\tilde{\mu}$ 를 구해서 importance sampling weight으로 사용하기 때문이다. 따라서 아래와 같이 전개되고 두 식이 같음을 보였다.
-  
+
+여기서 우리는 $ \tilde{\mu} $ 와
+$$
+Z = \mathbb{E}_{ \tau \sim \mu}[ \frac{ e^{ -c_{\theta} (\tau) } }{\tilde{\mu} (\tau)} ]
+$$
+를 상수 취급 한다.   IRL optimization에서 $Z$ 를 구하고 나서 그 값으로 mixture policy $ \tilde{\mu} $ 를 구해서 importance sampling weight으로 사용하기 때문이다. 따라서 아래와 같이 전개되고 두 식이 같음을 보였다.
+
 $$
 \begin{split}
 \partial_{\theta}\mathcal{L}_{cost}(\theta)
@@ -233,11 +237,11 @@ $$
 &= \partial_{\theta}\mathcal{L}_{discriminator}(D_{\theta})
 \end{split}
 $$
-  
+
 #### 3.3 The generator optimizes the MaxEnt IRL objective
-  
+
 이번 절에서는 generator의 loss가 GCL의 sampler loss와 동일함을 보인다.
-  
+
 $$
 \begin{split}
 \mathcal{L}_{generator}(D) &= \mathbb{E}_{\tau \sim G}[\log (1- D(\tau)) -\log D(\tau)] \\
@@ -247,17 +251,17 @@ $$
 &= \mathcal{L}_{sample}(q) + \log Z 
 \end{split}
 $$
-  
+
 generator를 학습할때는 IRL step에서 한 Z를 fix해서 사용하기 때문에 상수로 취급하기 때문에 MaxEnt IRL의 sampler와 동일한 형태가 된다.  
-  
+
 이로써 3가지 사실을 보였기 때문에 GAN의 variant가 sample based MaxEnt IRL과 동일함을 보였다. 따라서 generator의 density 을 효과적으로 그리고 정확히 evaluation할 수 있는 구조를 통해서 GAN training을 함으로 써 sample들의 quality를 개선할 수 있다.    
-  
+
 ## 4 GANs for training EBMs
-  
+
 EBM의 관점에서 GAN을 다시 살펴보자. 위에서 사용한 cost function을 energy function으로 생각하면 된다.  
-  
+
 EBM의 문제가 partition function을 구하는 것이 intractable하다는 것이 었다. 하지만 data분포를 모르더라도 EBM으로 근사하고 우리가 generator의 density만 안다면 unbiased partition funtion을 구할 수 있는 식을 유도했다. 이후  이 Z 값을 사용해서 energy function을 최적화하고 다시 구해진 energy function으로 generator를 최적화 하는 과정으로 EBM을 트레이닝하는데 GAN을 사용할 수 있다. 식은 아래와 같다.
-  
+
 $$
 \begin{split}
 Z &= \mathbb{E}_{x \sim \mu}[ \frac{e^{-E_{\theta}(x)}}{ \frac{1}{2}\tilde{p}(x) + \frac{1}{2}q(x)}] \\
@@ -268,13 +272,13 @@ Z &= \mathbb{E}_{x \sim \mu}[ \frac{e^{-E_{\theta}(x)}}{ \frac{1}{2}\tilde{p}(x)
 
 \end{split}
 $$
-  
+
 여기서 우리는 $\tilde{p}(x)$ 를  EBM을 사용해서 $p_{\theta}(x)$ 로 두면 GAN의 special case가 되고 implement하기도 쉬워진다. optimal 한 discriminator를 생각했을 때 discriminator의 output은 $\sigma(E_{\theta} -\log q(x))$ 가 된다. 그래고 discriminator의 loss는 위의 식에서 보이듯이 data에 대한 log probability 이며 generator의 loss는 discriminator의 log odds가 된다.      
-  
+
 여기서 Energy function은 log likelihood로 design했지만 MSE로 할 수도 있고 f-divergence 같은 다양한 형태도 가능하다.  
-  
+
 ## 5. Related Work
-  
+
 GAIL와의 차별점을 비교하면 GAIL의 policy 는 MaxEnt IRL 과 같은 objective로 학습되지만, discriminator의 경우 generator의 density를 사용하지 않고 단순히 sample 을 사용했기에 cost function이 discriminator에는 implicit하게 남아있다. 그래서  cost function이 어떻게 되는지 모르게 되기 때문에 학습 이후 discriminator는 버려진다.  
-  
+
 또한 2-level optimization을 하기 때문에 actor-critic과 유사한 문제를 겪는다. 그래서 actor-crtic에서 사용되는 optimization trick이 위의 방법론에도 똑같이 적용될 수 있다.  
