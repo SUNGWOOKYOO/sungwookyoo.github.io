@@ -55,7 +55,9 @@ conditional distribution을 $p(x\|y)$ 로 써야 블로그에서 안깨짐
   <li> </ul>
 </ol>
 
-
+## minimal mistakes posting
+### gallery, video
+follow [this tutorial](https://mmistakes.github.io/minimal-mistakes/docs/helpers/#gallery)
 
 
 
