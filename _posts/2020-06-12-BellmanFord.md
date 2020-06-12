@@ -140,7 +140,7 @@ defaultdict(list,
 naive 하게 그래프 정점 수만큼 그래프 내 <span style="color:red">모든 엣지에 대해 *edge relaxation*을 수행</span>한다.  <br>
 그러면 (negative weight cycle 이 없다는 가정하에) 모든 정점수 만큼의 *relaxation*을 돌았을때, shortest path를 찾을 수 있다. 
 
-### Pseudo Code
+## Pseudo Code
 ```python
 Bellman(G, s)
 	# shortest distance 값을 저장할 array
@@ -166,7 +166,7 @@ Bellman(G, s)
     return d
 ```
 
-### Time Complexity
+## Time Complexity
 모든 cases 에 대해 edge relaxation을 수행해야하므로 $T(n) =O(VE)$
 
 [c++](https://github.com/SUNGWOOKYOO/Algorithm/blob/master/src_Cplus/graphAlgo/BellmanFord.cpp) 
@@ -249,9 +249,9 @@ WorkingTime[bellman]: 0.01311 ms
 
 
 
-### Application 
+## Application 
 
-It can be used to detect negative weight cycle like floyd warshall algorithm! 
+It can be used to detect negative weight cycle like [floyd warshall algorithm](https://sungwookyoo.github.io/algorithms/FloydWarshall/)! 
 
 ##  DAG 
 
