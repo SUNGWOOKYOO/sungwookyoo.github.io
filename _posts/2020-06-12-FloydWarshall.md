@@ -1,5 +1,5 @@
 ---
-title: "Floyd Warshall Algorithm in python"
+title: "Floyd Warshall Algorithm in Python"
 excerpt: "All pair shortest paths algorithm"
 categories:
  - algorithms
@@ -589,7 +589,7 @@ WorkingTime[floyd]: 37.94217 ms
 
 ## Reference
 
-[1] https://www.geeksforgeeks.org/directed-graphs-multigraphs-and-visualization-in-networkx/ <br>
-[2] https://www.programiz.com/dsa/floyd-warshall-algorithm <br>
-[3] https://www.geeksforgeeks.org/detect-negative-cycle-graph-bellman-ford/ <br>
-[4] https://github.com/SUNGWOOKYOO/Algorithm/blob/master/src_Cplus/graphAlgo/FloydWarshall.cpp <br>
+[1] [geeksforgeeks - visualization of a graph](https://www.geeksforgeeks.org/directed-graphs-multigraphs-and-visualization-in-networkx/) <br>
+[2] [referenced blog - floyd warshall algorithm](https://www.programiz.com/dsa/floyd-warshall-algorithm )<br>
+[3] [geeksforgeeks - detect negative cycles](https://www.geeksforgeeks.org/detect-negative-cycle-graph-bellman-ford/) <br>
+[4] [c++ implementation](https://github.com/SUNGWOOKYOO/Algorithm/blob/master/src_Cplus/graphAlgo/FloydWarshall.cpp) <br>
