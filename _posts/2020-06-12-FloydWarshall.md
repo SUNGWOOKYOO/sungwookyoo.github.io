@@ -70,10 +70,11 @@ def generate_graph(n, m, randrange:Tuple[int, int] ,verbose=False):
 # graph = generate_graph(n, m, verbose=True)
 # graph
 ```
+# Floyd Warshall algorithm
 
 </div>
 
-### Toy example 
+## Toy example 
 <img src="https://cdn.programiz.com/sites/tutorial2program/files/fw-Graph.png" width="300">
 
 <div class="prompt input_prompt">
@@ -126,10 +127,6 @@ weights
  [1e+20, 1, 0, 1e+20],
  [1e+20, 1e+20, 2, 0]]
 ```
-
-
-
-# Floyd Warshall Algorithm
 
 ## Constraints
 Floyd Warshall Algorithm is an algorithm for **finding shortest paths** <br>
@@ -358,7 +355,7 @@ Back Propagation: $P^{(k)}$의 각 entry $P_{ij}^{(k)}$가 의미하는것은 �
 ($k = 1,..,n$ 까지 모두 update되어야 진짜 shortest path가 됨)
 
 <figure>
-    <img src="assets/images/FloydWarshall_files/floyd.PNG" width="500">
+    <img src="/assets/images/FloydWarshall_files/floyd.PNG" width="500">
     <figcaption> Procedure of Floyd Warshall Algorithm </figcaption>
 </figure>
 
@@ -480,7 +477,7 @@ plot(ans1)
 </div>
 
 
-![png](FloydWarshall_files/FloydWarshall_14_0.png)
+![png](/assets/images/FloydWarshall_files/FloydWarshall_14_0.png)
 
 
 {:.output_stream}
@@ -571,7 +568,7 @@ A graph is generated!
 ```
 
 
-![png](FloydWarshall_files/FloydWarshall_16_1.png)
+![png](/assets/images/FloydWarshall_files/FloydWarshall_16_1.png)
 
 
 {:.output_stream}
