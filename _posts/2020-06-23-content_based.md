@@ -294,7 +294,7 @@ tfidf_df
 
 
 
-Let's process [movielen dataset](https://grouplens.org/datasets/movielens/). <br>
+Let's preprocess [movielen dataset](https://grouplens.org/datasets/movielens/). <br>
 If you want to know about more details please see this document.
 
 The description of movielen dataset as follows. <br>
@@ -1412,14 +1412,14 @@ From substring 'Inception', recommend movies as follows!
 
 ## Step 4. Furthermore; Utilize Tags
 
-We have to extract and processing tag information to implement tag-based recommender engine.
+We have to extract and preprocessing tag information to implement tag-based recommender engine.
 
-Therefore, We will use MySQL to processing records eaily.
+Therefore, We will use MySQL to preprocessing records eaily.
 If you want to know about how to deal with MySQL and pymysql follow [this guide](https://sungwookyoo.github.io/tips/PymySql/) in my blog.
 
 ### Step 4 - 1. Generate View in MySQL
 
-<span style="color:red">**PreRequsite:**</span> In mysql, please execute this commands to processing tag information as follows.
+<span style="color:red">**PreRequsite:**</span> In mysql, please execute this commands to preprocessing tag information as follows.
 ```mysql
 create view tmp as 
     select movieId, group_concat(tag separator '|') as tag 
