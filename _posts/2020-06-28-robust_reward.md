@@ -30,7 +30,7 @@ header:
 
 ## 1. Introduction
 
-기존 IRL 문제는 ambiguous policy와 ambiguous reward문제가 있었다. 전자는 MaxEnt IRL 을 통해 해결됬지 후자는 아직 어려움이 있다. 저자는 dynamics 변화에서 변하지 않는 reward를 disentangled reward라고 말한다.  GAIL은 reward를 복원할 수 없고 entire trajectory 수준에서 동작하지 않지만 저자가 제안하는 Adversarial IRL  (AIRL) 방법은 dynamics를 모르는 continuous, high dimensional task에서 disentangled reward를 학습할 수 있고 복원가능하다.
+기존 IRL 문제는 ambiguous policy와 ambiguous reward문제가 있었다. 전자는 MaxEnt IRL 을 통해 해결됬지 후자는 아직 어려움이 있다. 저자는 dynamics 변화에서 변하지 않는 reward를 disentangled reward라고 말한다.  GAIL은 reward를 복원할 수 없고 GCL은 entire trajectory 수준에서 동작하지 않지만 저자가 제안하는 Adversarial IRL  (AIRL) 방법은 dynamics를 모르는 continuous, high dimensional task에서 disentangled reward를 학습할 수 있고 복원가능하다.
 
 ## 2. Related Work
 
@@ -408,7 +408,6 @@ f^{*}(s,a,s') &= A^{*}(s,a) & \mbox{,from Appendix A.4} \\
 &= \underbrace{g^{*}(s) - h^{*}(s)}_{c(s) = a(s)+ const} + \underbrace{\gamma h^{*}(s')}_{d(s') = b(s')+ const} 
 \end{split}
 $$
-
 
 ---
 
