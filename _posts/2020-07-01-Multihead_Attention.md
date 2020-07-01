@@ -1,5 +1,5 @@
 ---
-title: "Transformer, Multi-head attetnion pytorch Guide Focusing on Masking"
+title: "Transformer, Multi-head Attetnion Pytorch Guide Focusing on Masking"
 excerpt: "how to use transformer pytorch module with masking details"
 categories:
  - tips
