@@ -1,6 +1,6 @@
 ---
 title: "Newton Rapshon(or Gauss-Newton) Method with Implementation on Python"
-excerpt: "Let's study about optimzation newton raphson method"
+excerpt: "Let's study about optimization newton raphson method"
 categories:
  - study
 tags:
@@ -52,7 +52,7 @@ $$
 \begin{align}
 y &= f'(x_i)(x - x_i) + f(x_i) \\
 0 &= f'(x_i)(x_{i + 1} - x_i) + f(x_i) \\
-\therefore x_{i+1} &= x_i -\frac{f(x_i)}{f'(x_i)} \underset{\text{vector representation}}{\Longleftrightarrow} \mathbf{x}_{i + 1} = \mathbf{x}_i - \mathbf{J}^{-1}(f(\mathbf{x}_i))f(\mathbf{x}_i)\\
+\therefore x_{i+1} = x_i -\frac{f(x_i)}{f'(x_i)} &\underset{\text{vector representation}}{\Longleftrightarrow} \mathbf{x}_{i + 1} = \mathbf{x}_i - \mathbf{J}^{-1}(f(\mathbf{x}_i))f(\mathbf{x}_i)\\
 \end{align}
 $$
 
@@ -263,13 +263,14 @@ In&nbsp;[7]:
 <div class="input_area" markdown="1">
 
 ```python
-def newton(f, m, init, epsilon=1e-7, verbose=True):
+def newton(f, m, init, epsilon=1e-7, verbose=True, history=False):
     """ Newton Raphson Method.
     f: function 
     m: the number of output dimension
     init: np.array, with dimension n """
     x = deepcopy(init)
     bound = 1e-7
+    memo = [x]
     while True:
         assert m == len(x), "inverse of jacobian does not exist"
         J_inv = np.linalg.inv(jacobian(f, m, x))
@@ -277,8 +278,10 @@ def newton(f, m, init, epsilon=1e-7, verbose=True):
         x = x - update
         if bound > sum(np.abs(update)):
             break
-        if verbose: print("x={} update={}".format(x, sum(np.abs(update))))
-    return x 
+        if verbose: print("x={} update={}".format(x, sum(np.abs(update))))            
+        if history: memo.append(x)
+    if not history: return x
+    return x, np.array(list(zip(*memo)))
 ```
 
 </div>
@@ -528,6 +531,206 @@ array([3.162278])
 
 
 
+## Example 4
+
+<div class="prompt input_prompt">
+In&nbsp;[15]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+x1 = np.arange(-30, 30, 1)
+x2 = np.arange(-30, 30, 1)
+print(x1.shape, x2.shape)
+x1, x2 = np.meshgrid(x1, x2)  # outer product by ones_like(x1) or ones_like(x2) 
+
+def f(x):
+    f1 = x[0]**2 - 2 + x[0]*x[1] - 10
+    f2 = x[1]**2 - 3*x[0]*(x[1]**2) - 57
+    return f1, f2
+
+x = np.concatenate((x1[np.newaxis, :], x2[np.newaxis, :]), axis=0)
+print(x[0].shape, x[1].shape)
+y = np.array(f(x))
+hyperplane = np.zeros_like(x1)
+print(x1.shape, x2.shape, y.shape)
+
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+ax.plot_surface(x1, x2, y[0], cmap='coolwarm', alpha=0.7)
+ax.contour(x1, x2, y[0], cmap='coolwarm', offset=0, alpha=1)
+ax.plot_surface(x1, x2, y[1], cmap='gray', alpha=0.5)
+ax.contour(x1, x2, y[1], cmap='gray', zdir='x', offset=-30, alpha=1)
+# ax.plot_surface(x1, x2, hyperplane, alpha=0.5)
+ax.set_zlim(-5000, 5000)
+plt.show()
+```
+
+</div>
+
+{:.output_stream}
+
+```
+(60,) (60,)
+(60, 60) (60, 60)
+(60, 60) (60, 60) (2, 60, 60)
+
+```
+
+
+![png](/assets/images/newton_raphson_files/newton_raphson_23_1.png)
+
+
+<div class="prompt input_prompt">
+In&nbsp;[16]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+ans, history = newton(f, m=2, init=np.array([5., 1.]), history=True)
+print(history.shape)
+print(ans)
+print("f(ans) = {}".format(f(ans)))
+```
+
+</div>
+
+{:.output_stream}
+
+```
+x=[ 4.491468 -1.481229] update=2.9897610912892185
+x=[3.073134 0.549184] update=3.4487469172444447
+x=[ 6.378826 -6.370453] update=10.225330245654375
+x=[ 5.358633 -3.47607 ] update=3.9145774809611384
+x=[ 4.224355 -1.58649 ] update=3.0238571449006724
+x=[3.059681 0.508261] update=3.259425753764904
+x=[ 6.66039  -6.937257] update=11.046227634721145
+x=[ 5.594116 -3.836744] update=4.166786219891734
+x=[ 4.402018 -1.882414] update=3.146428860525024
+x=[3.306956 0.045852] update=3.0233279503405157
+x=[ 38.186497 -69.920943] update=104.84633614549777
+x=[ 35.518073 -37.421387] update=35.16798054774894
+x=[ 24.371564 -24.631017] update=23.936878558723713
+x=[ 16.660407 -16.250121] update=16.092052372087466
+x=[ 11.503055 -10.655777] update=10.751696797973349
+x=[ 8.142025 -6.851262] update=7.165544652576577
+x=[ 6.00073  -4.187433] update=4.805123679894626
+x=[ 4.620288 -2.20339 ] update=3.3644855564382965
+x=[ 3.537712 -0.374169] update=2.9117968229359312
+x=[-0.498923  7.500642] update=11.91144500180123
+x=[ 2.881338 20.504327] update=16.383946296526858
+x=[ 1.155922 17.01272 ] update=5.217022997922324
+x=[1.375131 5.560684] update=11.671245231046441
+x=[ 3.215405 -3.770844] update=11.171802846740402
+x=[ 4.24677  -0.336576] update=4.465633231448297
+x=[-0.063991  6.858782] update=11.506119607818658
+x=[ 1.949196 24.291654] update=19.446059618603222
+x=[ 0.841096 20.232967] update=5.166787041731603
+x=[ 1.531627 -4.566096] update=25.489593861668588
+x=[ 8.944667 13.576908] update=25.55604516824303
+x=[ 3.701962 10.840108] update=7.979505280438819
+x=[2.008696 7.884326] update=4.649047869342555
+x=[2.216521 2.733946] update=5.358205378379376
+x=[ 3.682322 -1.542212] update=5.741959725544182
+x=[2.858799 0.878633] update=3.2443684263338985
+x=[ 5.287208 -4.264406] update=7.571447830261409
+x=[ 4.465048 -2.036373] update=3.050193517755833
+x=[ 3.410273 -0.149007] update=2.9421404118502865
+x=[-6.959394 20.394751] update=30.9134248479969
+x=[-17.704566  -4.763661] update=35.90358464317116
+x=[-8.570734 -3.698475] update=10.199018089887751
+x=[-4.385028 -3.007022] update=4.877158727279548
+x=[-2.770593 -2.687522] update=1.9339352352799333
+x=[-2.407191 -2.639919] update=0.4110045050978556
+x=[-2.386085 -2.64323 ] update=0.024415772855854504
+x=[-2.386016 -2.643287] update=0.00012616945083334416
+(2, 47)
+[-2.386016 -2.643287]
+f(ans) = (1.7763568394002505e-15, 7.105427357601002e-15)
+
+```
+
+<div class="prompt input_prompt">
+In&nbsp;[17]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+fig, (ax11, ax12) = plt.subplots(nrows=1, ncols=2, figsize=(15, 6))
+
+""" f1 figure """
+ax11.remove()
+ax11 = fig.add_subplot(1,2,1,projection='3d')
+ax11.plot_surface(x1, x2, y[0], cmap='coolwarm', alpha=0.7)
+ax11.contour(x1, x2, y[0], cmap='coolwarm', zdir='z', offset=0, alpha=1)
+ax11.scatter(history[0, :], history[1, :], s=4, color='blue')
+ax11.scatter(*ans, s=50, color='red')
+# ax1.plot(history[0, :], history[1, :], color='black', linewidth=0.5)
+ax11.set_xlim(-30, 30), ax11.set_ylim(-30, 30)
+
+order = list(range(len(history[0])))
+ax12.contour(x1, x2, y[0], cmap='coolwarm', alpha=1)
+ax12.scatter(history[0, :], history[1, :], s=4 ,color='blue')
+order = list(range(len(history[0])))
+for i, txt in enumerate(order):
+    ax12.annotate(txt, (history[0][i], history[1][i]))
+ax12.scatter(*ans, s=50, color='red')
+# ax2.plot(history[0, :], history[1, :], color='black', linewidth=0.5)
+ax12.set_xlim(-30, 30), ax12.set_ylim(-30, 30)
+ax12.grid(linestyle='--')
+
+plt.show()
+```
+
+</div>
+
+
+![png](/assets/images/newton_raphson_files/newton_raphson_25_0.png)
+
+
+<div class="prompt input_prompt">
+In&nbsp;[18]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+fig, (ax21, ax22) = plt.subplots(nrows=1, ncols=2, figsize=(15, 6))
+
+""" f2 figure """
+ax21.remove()
+ax21 = fig.add_subplot(1,2,1,projection='3d')
+ax21.plot_surface(x1, x2, y[1], cmap='coolwarm', alpha=0.7)
+ax21.contour(x1, x2, y[1], cmap='coolwarm', zdir='z', offset=0, alpha=1)
+ax21.contour(x1, x2, y[1], cmap='coolwarm', zdir='x', offset=-30, alpha=1)
+ax21.scatter(history[0, :], history[1, :], s=4, color='blue')
+ax21.scatter(*ans, s=50, color='red')
+# ax1.plot(history[0, :], history[1, :], color='black', linewidth=0.5)
+ax21.set_xlim(-30, 30), ax21.set_ylim(-30, 30)
+
+order = list(range(len(history[0])))
+ax22.contour(x1, x2, y[1], cmap='coolwarm', alpha=1)
+ax22.scatter(history[0, :], history[1, :], s=4 ,color='blue')
+order = list(range(len(history[0])))
+for i, txt in enumerate(order):
+    ax22.annotate(txt, (history[0][i], history[1][i]))
+ax22.scatter(*ans, s=50, color='red')
+# ax2.plot(history[0, :], history[1, :], color='black', linewidth=0.5)
+ax22.set_xlim(-30, 30), ax22.set_ylim(-30, 30)
+ax22.grid(linestyle='--')
+
+plt.show()
+```
+
+</div>
+
+
+![png](/assets/images/newton_raphson_files/newton_raphson_26_0.png)
+
+
 ## Furthermore
 최소/최대값을 구할때는 $f'(x) = 0$ 의 해를 찾는 것이므로 다음과 같은 과정을 수행한다. <br>
 ($\nabla$는 gradient, $\nabla \otimes \nabla$ 는 hessian)
@@ -540,7 +743,7 @@ $$
 2. hessian 구한다. (gradient의 jacobian 을 구한 후 transpose해도 됨)
 3. 초기 지점부터 수렴할 때까지 업데이트 해나간다. 
 
-## Example 4
+## Example 5
 Find the minimum value of following function. 
 $$
 f(x) = 0.5x_1^2 + 5.5 x_2^2
@@ -549,7 +752,7 @@ $$
 Find numerical solution starting from $x_1 = 5, x_2 = 1 $
 
 <div class="prompt input_prompt">
-In&nbsp;[15]:
+In&nbsp;[19]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -568,6 +771,7 @@ print(x1.shape, x2.shape, y.shape)
 fig = plt.figure()
 ax = plt.axes(projection='3d')
 ax.plot_surface(x1, x2, yprime, cmap='coolwarm', alpha=0.7)
+ax.contour(x1, x2, yprime, cmap='coolwarm', alpha=0.7)
 ax.plot_surface(x1, x2, hyperplane, cmap='viridis', alpha=0.5)
 ax.scatter([5], [1], [5 + 11 * 1], s=60 ,color='red')
 plt.show()
@@ -583,7 +787,7 @@ plt.show()
 ```
 
 
-![png](/assets/images/newton_raphson_files/newton_raphson_23_1.png)
+![png](/assets/images/newton_raphson_files/newton_raphson_28_1.png)
 
 
 https://math.stackexchange.com/questions/3254520/computing-hessian-in-python-using-finite-differences <br>
@@ -594,7 +798,7 @@ $$
 $$
 
 <div class="prompt input_prompt">
-In&nbsp;[16]:
+In&nbsp;[20]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -608,7 +812,7 @@ def f(x):
 </div>
 
 <div class="prompt input_prompt">
-In&nbsp;[17]:
+In&nbsp;[21]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -631,7 +835,7 @@ array([ 5., 11.])
 
 
 <div class="prompt input_prompt">
-In&nbsp;[18]:
+In&nbsp;[22]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -662,7 +866,7 @@ def jacobian(f, m, x, epsilon=1e-10):
 </div>
 
 <div class="prompt input_prompt">
-In&nbsp;[19]:
+In&nbsp;[23]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -700,7 +904,7 @@ array([[ 0.976996,  0.088818],
 
 
 <div class="prompt input_prompt">
-In&nbsp;[20]:
+In&nbsp;[24]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -725,13 +929,13 @@ array([[ 1.02429 , -0.008194],
 
 
 <div class="prompt input_prompt">
-In&nbsp;[21]:
+In&nbsp;[25]:
 </div>
 
 <div class="input_area" markdown="1">
 
 ```python
-def newton(f, m, init, epsilon=1e-7, verbose=True):
+def newton(f, m, init, epsilon=1e-7, verbose=True, history=False):
     """ Newton Raphson Method.
     f: function 
     m: the number of output dimension
@@ -761,6 +965,7 @@ def newton(f, m, init, epsilon=1e-7, verbose=True):
     
     x = deepcopy(init)
     bound = 1e-7
+    memo = [x]
     while True:
         H_inv = np.linalg.inv(hessian(f, n=len(x), x=x))
         update = np.matmul(H_inv, gradient(f, x))
@@ -768,19 +973,22 @@ def newton(f, m, init, epsilon=1e-7, verbose=True):
         if bound > sum(np.abs(update)):
             break
         if verbose: print("x={}, update={}".format(x, sum(np.abs(update))))
-    return x
+        if history: memo.append(x)
+    if not history: return x
+    return x, np.array(list(zip(*memo)))
 ```
 
 </div>
 
 <div class="prompt input_prompt">
-In&nbsp;[22]:
+In&nbsp;[26]:
 </div>
 
 <div class="input_area" markdown="1">
 
 ```python
-ans = newton(f, m=1, init=np.array([5, 1], dtype=float), verbose=True)
+ans, history = newton(f, m=1, init=np.array([5, 1], dtype=float), verbose=True, history=True)
+print("history.shape={}".format(history.shape))
 f(ans)
 gradient(f, ans)
 ```
@@ -793,6 +1001,7 @@ gradient(f, ans)
 x=[-0.031314  0.049459], update=5.981855423871908
 x=[-7.739249e-07  5.244940e-08], update=0.08077178497943122
 x=[1.376429e-21 0.000000e+00], update=8.263742810599175e-07
+history.shape=(2, 4)
 
 ```
 
@@ -805,6 +1014,74 @@ x=[1.376429e-21 0.000000e+00], update=8.263742810599175e-07
 array([0., 0.])
 ```
 
+
+
+<div class="prompt input_prompt">
+In&nbsp;[27]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+[f(vector) for vector in history.T]
+```
+
+</div>
+
+
+
+
+{:.output_data_text}
+
+```
+[18.0, 0.013944122571079616, 3.1461002793436933e-13, 9.472777618835763e-43]
+```
+
+
+
+<div class="prompt input_prompt">
+In&nbsp;[28]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+x1 = np.arange(-10, 10, 1)
+x2 = np.arange(-10, 10, 1)
+x1, x2 = np.meshgrid(x1, x2)  # outer product by ones_like(x1) or ones_like(x2) 
+y = 0.5*x1**2 + 5
+.5*x2**2
+hyperplane = np.zeros_like(x1)
+print(x1.shape, x2.shape, y.shape)
+
+""" 3D figure """
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+ax.contour(x1, x2, y, cmap='coolwarm', zdir='z', offset=0, alpha=1)
+ax.contour(x1, x2, y, zdir='y', offset=10, alpha=1)
+ax.plot_surface(x1, x2, y, cmap='viridis', alpha=0.5)
+ax.scatter(history[0, :], history[1, :], [f(vector) for vector in history.T], s=10 ,color='red')
+
+""" 2D figure """
+# ax = plt.axes()
+# ax.contour(x1, x2, y, cmap='coolwarm', alpha=1)
+# ax.scatter(history[0, :], history[1, :], s=5 ,color='red')
+
+plt.grid(linestyle='--')
+plt.show()
+```
+
+</div>
+
+{:.output_stream}
+
+```
+(20, 20) (20, 20) (20, 20)
+
+```
+
+
+![png](/assets/images/newton_raphson_files/newton_raphson_38_1.png)
 
 
 ## Reference
@@ -822,7 +1099,12 @@ array([0., 0.])
     * 만약 그 pseudo inverse가 singular 행렬(역행렬이 존재하지 않는 행렬)에 근접한 경우에는 계산된 역행렬이 수치적으로 불안정하여 해가 발산할 수 있는 문제점이 있다.
 
 특징: 한번에 많은 이동을 하기 때문에 수렴이 빠를 수 있다. 
-하지만, jacobian과 역함수를 구해야한다던지의 과정이 어렵다. (Talyor Series를 이용해서 근사함으로서 구하는 방식도 사용 가능한 것 같다. 확실치 않아 좀더 공부해야할 것 같음)
+하지만, 각각의 iteration 마다 jacobian과 역함수 혹은 hessian과 그 역함수를 구하는 것은 값비싼 연산이다. (Talyor Series를 이용해서 근사함으로서 구하는 방식도 사용 가능한 것 같다. 확실치 않아 좀더 공부해야할 것 같음)
+<details> <summary> 추가적 내용</summary>
+    Newton Raphson Method 방식은 각 iteration마다 jacobian 혹은 hessian을 필요로 하는 경우까지 생길 수 있어, 그 matrix를 계산하는 것은 부담이 상당히 크다. 따라서 이 matrix를 근사하던지 좀더 변형된 방식으로 구하는 Gradient Descent, Quasi-Newton, BFGS, DFP 등이 있다. 나중에 다루어 보도록 하겠다. 
+</details>
+
+
     
 ## Memo: 정리할 내용
 1. gradient, jacobian, hessian, laplacian 계산 및 의미
