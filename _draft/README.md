@@ -38,11 +38,29 @@ inline 수식에 대해서 _ 을 escape 기호를 사용하여  \\_ 로 작성�
 ## HTML
 ### picture
 <figure>
-  <img src="address" width="300" title="#">
+  <img src="address" width="300" style="background-color:white"; title="#">
   <figcaption> Fig1. </figcaption>
 </figure>
 
+
+jupyter의 css 를 따르되, two column 이미지를 만들고 싶을 경우
+
+```html
+<div class="row">
+<center>
+<figure>
+<img src="images/skipgram.png" style="background-color:white"; alt="skipgram" width="400">
+<img src="images/cbow.png" style="background-color:white"; alt="cbow" width="400">
+<figcaption> <center> 그림 1. Skip-Gram(왼쪽) 과 CBOW(오른쪽) </center> </figcaption>
+</figure>
+</center>
+</div>
+```
+
+
+
 ### footnote 
+
 첨자 표현 <sub>[1]</sub>
 
 ### conceal
