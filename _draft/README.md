@@ -46,15 +46,10 @@ inline 수식에 대해서 _ 을 escape 기호를 사용하여  \\_ 로 작성�
 jupyter의 css 를 따르되, two column 이미지를 만들고 싶을 경우
 
 ```html
-<div class="row">
-<center>
-<figure>
-<img src="images/skipgram.png" style="background-color:white"; alt="skipgram" width="400">
-<img src="images/cbow.png" style="background-color:white"; alt="cbow" width="400">
-<figcaption> <center> 그림 1. Skip-Gram(왼쪽) 과 CBOW(오른쪽) </center> </figcaption>
+<figure style="text-align: center;">
+    <img src="/assets/images/Word2Vec_files/skipgram.png" style="background-color:white;width:300px;height:300px;"> <br>
+    <figcaption style="text-align: center;"> <b>그림 1-2</b>. Skip-Gram </figcaption>
 </figure>
-</center>
-</div>
 ```
 
 
