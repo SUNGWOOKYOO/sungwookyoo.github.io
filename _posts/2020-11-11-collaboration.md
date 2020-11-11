@@ -44,11 +44,11 @@ GitHub를 통한  collaboration은 다음과 같은 다이어그램으로 이루
 >
 > 예시로 `git remote -v` 명령을 사용하면 원격 리포지토리에 대한 등록 정보를 확인할 수있다.
 >
-> [root@6e031d1a6b39 log_partitioner (log-partitioner)]# git remote -v
-> origin  https://github.daumkakao.com/tony-yoo/contextual_bandit_pilot.git (fetch)
-> origin  https://github.daumkakao.com/tony-yoo/contextual_bandit_pilot.git (push)
-> upstream        https://github.daumkakao.com/toros/contextual_bandit_pilot.git (fetch)
-> upstream        https://github.daumkakao.com/toros/contextual_bandit_pilot.git (push)
+> [root@hostname]# git remote -v
+> origin  https://origin_address.git (fetch)
+> origin  https://origin_address.git (push)
+> upstream        https://upstream_address.git (fetch)
+> upstream        https://upstream_address.git (push)
 
 이때 만약 upstream에 대한 정보가 없거나 추가적으로 친구나 동료의 fork 된 프로젝트를 원격 저장소로 등록하고 싶은 경우에는 아래와 같이 추가할 수 있다.
 
