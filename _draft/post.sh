@@ -3,3 +3,4 @@ TODAY=$(date -I)
 POSTNAME="$TODAY-$1.md"
 cat template.txt > $POSTNAME
 sed -i "s/DAY/$TODAY/" $POSTNAME
+cat "$1.md" >> $POSTNAME
