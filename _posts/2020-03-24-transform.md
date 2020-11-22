@@ -21,7 +21,7 @@ header:
 ---
 
 
-# Global 좌표와 Local좌표의 변환방법
+Global 좌표와 Local좌표의 변환방법을 알아보자
 
 <div class="prompt input_prompt">
 In&nbsp;[1]:
@@ -37,7 +37,7 @@ import numpy as np
 
 </div>
 
-# Local coordination
+# coordination
 
 local coordination은 x축이 진행방향이고 right handed system이다.  
 
@@ -110,10 +110,9 @@ plt.quiver(car[0][0], car[1][0], v[0], v[1], color=['red'], scale=10)
 
 ![png](/assets/images/transform_files/transform_4_1.png)
 
-
-Robotic에서 많은 경우에 Local 좌표계에서  
+Robotic에서 많은 경우에 위의 경우와 같이 Local 좌표계에서  
 북쪽을 x축 기준으로 하며 yaw를 북측기준 시계방향으로 설정한다.  
-따라서 현재의 frame을 {A}라고 하고  변환 후의 frame을 {B}라고 하자.  
+우선 변환 matrix를 나타내보자. 현재의 frame을 {A}라고 하고  변환 후의 frame을 {B}라고 하자.  
 
 frame 변환 matrix는 다음과 같이 나타낼 수 있다.
 
@@ -132,7 +131,6 @@ $$
 
 $_{A}^{B}T : ^{A}P \rightarrow ^{B}P$ 는 
 z축으로 90도 회전하는 변환이며 아래와 같이 표현된다.  
-
 $$
 _{A}^{B}T = \begin{bmatrix}
  0 & -1 & 0 & 0 \\
@@ -177,11 +175,14 @@ plt.quiver(local_car[0][0], local_car[1][0], v[0], v[1], color=['red'], scale=10
 
 
 
-
 ![png](/assets/images/transform_files/transform_6_1.png)
 
+위 그림은 local 좌표계를 나타낸다.
 
-## Local 에서 Global 으로의 변환
+
+
+
+# Local 에서 Global 으로의 변환
 
 local coordination을 B frame이라고 하고,  
 global coordination을 C frame이라고 하자.   
@@ -198,11 +199,54 @@ yaw(\phi) = \frac{\pi}{6} \\
 \end{bmatrix}
 $$
 
-B에서 C frame으로 변환시  
-위에 나타나 있는 A frame 정보를 사용하면 $_{A}^{C}T$ 만 얻을 수 있다.  
-B에서 A 로 변환을 하고 A에서 C 로 변환을 해야한다.  
+위에 나타나 있는 A frame 정보를 사용하면 $_{A}^{C}T = \begin{bmatrix}
+ cos\frac{\pi}{6} & - sin\frac{\pi}{6} & 0 & 8 \\
+ sin\frac{\pi}{6} &  cos\frac{\pi}{6} & 0 & 5 \\
+ 0 & 0 & 1 & 0 \\
+ 0 & 0 & 0 & 1 \\
+\end{bmatrix}$ 를 얻을 수 있다.  
+
+local 좌표에서 global 좌표로 변환하려면   
+
+ $-\frac{\pi}{2}$ 만큼 회전하고 다시 $\frac{\pi}{6} $ 만큼 회전하고 $\begin{bmatrix}
+ 8 \\
+ 5 \\
+ 0 \\
+ 0  \\
+\end{bmatrix}$ 만큼 이동을 하면 된다.
+
+이것을 수식으로 나타내면 다음과 같다.   
+
+B에서 C frame으로 변환시 B에서 A 로 변환을 하고 A에서 C 로 변환을 해야한다.  
 우리는 $_{A}^{C}T$ 와 $_{A}^{B}T$ 를 알고 있으므로 아는 변환식을 사용해 표현하면,   
-$_{B}^{C}T = _{A}^{C}T_{B}^{A}T = _{A}^{C}T(_{A}^{B}T)^{-1}$ 가 된다.  
+${}_{B}^{C}T = {}_{A}^{C}T_{B}^{A}T = {}_{A}^{C}T({}_{A}^{B}T)^{-1}$ 가 된다.  
+
+임의의 yaw = $\phi$ 와 global position = $\begin{bmatrix}
+ x \\
+ y \\
+ z \\
+\end{bmatrix}$ 에대해서 위의 변환식을 풀면 아래와 같다.
+$$
+{}_{B}^{C}T = \begin{bmatrix}
+ cos\phi & - sin\phi & 0 & x \\
+ sin\phi &  cos\phi & 0 & y \\
+ 0 & 0 & 0 & z \\
+ 0 & 0 & 0 & 1 \\
+ \end{bmatrix}
+ \begin{bmatrix}
+ 0 & 1 & 0 & 0 \\
+ -1 &  0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 1 \\
+ \end{bmatrix} 
+ =  \begin{bmatrix}
+ sin\phi & cos\phi & 0 & x \\
+ -cos\phi &  sin\phi & 0 & y \\
+ 0 & 0 & 0 & z \\
+ 0 & 0 & 0 & 1 \\
+ \end{bmatrix}
+$$
+
 
 
 <div class="prompt input_prompt">
@@ -242,7 +286,6 @@ plt.quiver(global_car[0][0], global_car[1][0], v[0], v[1], color=['red'], scale=
 
 ![png](/assets/images/transform_files/transform_8_1.png)
 
-
 Robotic에서 많은 경우에 Global 좌표계에서  
 북쪽을 x축 기준으로 하며 yaw를 북측기준 시계방향으로 설정한다.  
 따라서 현재의 frame을 {C}라고 하고  변환 후의 frame을 {D}라고 하자. 
@@ -270,8 +313,22 @@ $$
 
 local frame 인 {B} 에서 global frame인 {D}로의 변환은
 $$
-_{B}^{D}T = _C^DT _A^CT (_A^BT)^{-1}
-= \begin{bmatrix}
+_{B}^{D}T = _C^DT _A^CT (_A^BT)^{-1} 
+= _{C}^{D}T _{B}^{C}T = 
+\begin{bmatrix}
+ 0 & -1 & 0 & 0 \\
+ 1 & 0 & 0 & 0 \\
+ 0 & 0 & 1 & 0 \\
+ 0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+ sin\phi & cos\phi & 0 & x \\
+ -cos\phi &  sin\phi & 0 & y \\
+ 0 & 0 & 0 & z \\
+ 0 & 0 & 0 & 1 \\
+\end{bmatrix}
+ = 
+\begin{bmatrix}
  cos\phi & -sin\phi & 0 & -y \\
  sin\phi & cos\phi & 0 & x \\
  0 & 0 & 1 & z \\
@@ -326,7 +383,30 @@ $$
 _{D}^{B}T 
 = _{B}^{D}T^{-1}
 = (_{C}^{D} T _{B}^{C}T)^{-1}
-= \begin{bmatrix}
+= 
+\begin{bmatrix}
+	\begin{bmatrix}
+     cos\phi & sin\phi & 0  \\
+     -sin\phi & cos\phi & 0 \\
+     0 & 0 & 1 \\
+ 	\end{bmatrix} & 
+ 	-\begin{bmatrix}
+     cos\phi & sin\phi & 0  \\
+     -sin\phi & cos\phi & 0 \\
+     0 & 0 & 1 \\
+ 	\end{bmatrix}
+	\begin{bmatrix}
+	-y \\
+	x \\
+	z \\
+	\end{bmatrix} \\
+	\begin{bmatrix}
+	0 & 0 & 0 
+	\end{bmatrix} & 1
+    
+\end{bmatrix} 
+\\
+=\begin{bmatrix}
  cos\phi & sin\phi & 0 & ycos\phi-xsin\phi \\
  -sin\phi & cos\phi & 0 & -ysin\phi-xcos\phi \\
  0 & 0 & 1 & -z \\
