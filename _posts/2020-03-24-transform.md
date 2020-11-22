@@ -37,7 +37,7 @@ import numpy as np
 
 </div>
 
-# coordination
+# Coordination
 
 local coordination은 x축이 진행방향이고 right handed system이다.  
 
@@ -199,50 +199,43 @@ yaw(\phi) = \frac{\pi}{6} \\
 \end{bmatrix}
 $$
 
-위에 나타나 있는 A frame 정보를 사용하면 $_{A}^{C}T = \begin{bmatrix}
+위에 나타나 있는 A frame 정보를 사용하면 
+$$
+\\_{A}^{C}T = \begin{bmatrix}
  cos\frac{\pi}{6} & - sin\frac{\pi}{6} & 0 & 8 \\
  sin\frac{\pi}{6} &  cos\frac{\pi}{6} & 0 & 5 \\
  0 & 0 & 1 & 0 \\
  0 & 0 & 0 & 1 \\
-\end{bmatrix}$ 를 얻을 수 있다.  
+\end{bmatrix}
+$$
 
-local 좌표에서 global 좌표로 변환하려면   
 
- $-\frac{\pi}{2}$ 만큼 회전하고 다시 $\frac{\pi}{6} $ 만큼 회전하고 $\begin{bmatrix}
- 8 \\
- 5 \\
- 0 \\
- 0  \\
-\end{bmatrix}$ 만큼 이동을 하면 된다.
+local 좌표에서 global 좌표로 변환하려면  $-\frac{\pi}{2}$ 만큼 회전하고 다시 $\frac{\pi}{6} $ 만큼 회전하고 $(8,5,0)$ 만큼 이동을 하면 된다.
 
 이것을 수식으로 나타내면 다음과 같다.   
 
-B에서 C frame으로 변환시 B에서 A 로 변환을 하고 A에서 C 로 변환을 해야한다.  
-우리는 $_{A}^{C}T$ 와 $_{A}^{B}T$ 를 알고 있으므로 아는 변환식을 사용해 표현하면,   
-${}_{B}^{C}T = {}_{A}^{C}T_{B}^{A}T = {}_{A}^{C}T({}_{A}^{B}T)^{-1}$ 가 된다.  
-
-임의의 yaw = $\phi$ 와 global position = $\begin{bmatrix}
- x \\
- y \\
- z \\
-\end{bmatrix}$ 에대해서 위의 변환식을 풀면 아래와 같다.
+B에서 C frame으로 변환시 B에서 A 로 변환을 하고 A에서 C 로 변환을 해야한다.  아는 변환식을 사용해 표현하면,   
+$$
+{}_{B}^{C}T = {}_{A}^{C}T_{B}^{A}T = {}_{A}^{C}T({}_{A}^{B}T)^{-1}
+$$
+임의의 yaw = $\phi$ 와 global position = $(x,y,z)$ 에대해서 위의 변환식을 풀면 아래와 같다.
 $$
 {}_{B}^{C}T = \begin{bmatrix}
  cos\phi & - sin\phi & 0 & x \\
  sin\phi &  cos\phi & 0 & y \\
- 0 & 0 & 0 & z \\
+ 0 & 0 & 1 & z \\
  0 & 0 & 0 & 1 \\
  \end{bmatrix}
  \begin{bmatrix}
  0 & 1 & 0 & 0 \\
  -1 &  0 & 0 & 0 \\
- 0 & 0 & 0 & 0 \\
+ 0 & 0 & 1 & 0 \\
  0 & 0 & 0 & 1 \\
  \end{bmatrix} 
  =  \begin{bmatrix}
  sin\phi & cos\phi & 0 & x \\
  -cos\phi &  sin\phi & 0 & y \\
- 0 & 0 & 0 & z \\
+ 0 & 0 & 1 & z \\
  0 & 0 & 0 & 1 \\
  \end{bmatrix}
 $$
@@ -324,7 +317,7 @@ _{B}^{D}T = _C^DT _A^CT (_A^BT)^{-1}
 \begin{bmatrix}
  sin\phi & cos\phi & 0 & x \\
  -cos\phi &  sin\phi & 0 & y \\
- 0 & 0 & 0 & z \\
+ 0 & 0 & 1 & z \\
  0 & 0 & 0 & 1 \\
 \end{bmatrix}
  = 
