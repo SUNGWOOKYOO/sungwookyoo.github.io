@@ -258,7 +258,7 @@ execution
 
 ## Reference
 
-![c++패키지경우] https://enssionaut.com/board_robotics/1221
+[c++패키지경우] https://enssionaut.com/board_robotics/1221
 
 
 
