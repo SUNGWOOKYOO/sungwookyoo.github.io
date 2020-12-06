@@ -108,7 +108,7 @@ $$
 $$
 r_{j}(x_{j}) = \begin{cases} 
 p_{j}x_{j} & 0 \leq x_{j} \leq q_{j} \\
-p_{j}q_{j} + p_{j}^{disc}(x_{j}-q_{j}) \geq q_{j}
+p_{j}q_{j} + p_{j}^{disc}(x_{j}-q_{j}) & x_{j} \geq q_{j}
 \end{cases}
 $$
 행동 수준이 할인 행동수준보다 낮을 때는 기본가격에 판다.  
