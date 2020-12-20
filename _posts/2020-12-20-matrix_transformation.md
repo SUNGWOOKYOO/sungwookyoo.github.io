@@ -18,7 +18,7 @@ header:
 
 # Matrix Transformation
 $R^{n}$ 에서 $R^{m}$ 으로 mapping 하는 선형변환을 matrix A d의 행렬변환으로 표현하는 방법을 알아보자.  
-  
+
 열벡터 $x_{1}, \cdots, x_{n}$ 를 $T: R^{n} \rightarrow R^{m}$에 대해서 선형변환하는 것은 중첩의 원리에 의해서 $R^{n}$ 상의 정규 직교 벡터들 $e_{1}, \cdots, e_{n}$ 을 각각 T에 대해서 선형변환을 하고 x에 대해서 선형결합을 하는 것과 같다.
 
 $$
@@ -117,7 +117,7 @@ plt.scatter(ys[1:,0],ys[1:,1], color='g')
 ### 원점을 지나는 직선에 대한 대칭변환
 
 기울기가 $\theta$인 원점을 지나는 직선에 대해 정규직교벡터를 대칭변환하면 아래와 같은 관계를 도출 할 수 있다.  
-  
+
 <img src="/assets/images/matrix_transformation_files/symmetric.jpg" width = 400>  
 
 대칭변환 행렬은 다음과 같다.  
@@ -346,9 +346,11 @@ ax3.scatter(Proj_x[0],Proj_x[1])
 <div style="width:200px; height:200px; border:1px solid green; float:left; background-color: white;">
 <img src="https://math.vanderbilt.edu/sapirmv/msapir/Images/reflection.gif">
 </div>
+<br> <br><br> <br><br><br>
 
-평면 a에 애해서 Reflection과 Projection은 다음과 같은 관계가 성립한다.  
+평면 a에 대해 Reflection과 Projection은 다음과 같은 관계가 성립한다.  
 
+<br>
 $$
 \begin{align}
 x - \mathcal{refl}_{a^{\bot}}(x) &= 2 \mathcal{proj}_{a}(x) \\
@@ -356,7 +358,9 @@ x - \mathcal{refl}_{a^{\bot}}(x) &= 2 \mathcal{proj}_{a}(x) \\
 &= x - 2\frac{x \cdot a}{||a||^{2}} a
 \end{align}
 $$
-만약 평면의 법선벡터 $a^{\bot}$를 안다면 $\mathcal{refl}_{a^{\bot}}(x)$에 대한 표준행렬인 하우스홀더 변환 행렬 $H_{a^{\bot}}$을 구할 수 있다
+<br>
+
+만약 평면의 법선벡터 $a^{\bot}$를 안다면 $\mathcal{refl}\_{a^{\bot}}(x)$에 대한 표준행렬인 하우스홀더 변환 행렬 $H\_{a^{\bot}}$을 구할 수 있다
 $$
 H_{a^{\bot}} = I - \frac{2}{a^{T} a} a a^{T}
 $$
