@@ -154,11 +154,12 @@ $Ux = y$를 x에 대해서 푸는 후진대입을 하면된다.
 b만 바뀐다면 매번 가우스 소거법을 통해서 x를 구하는 것에 비해 간단하게 문제를 풀 수 있다.  
 $L x = b$ 에서 [전진대입의 해](https://ko.wikipedia.org/wiki/%EC%82%BC%EA%B0%81%ED%96%89%EB%A0%AC)는 다음과 같다.
 $$
-x_{m}={{b_{m}-\left(\sum _{i=1}^{m-1}\ell _{m,i}x_{i}\right)} \over {\ell _{m,m}}}
+x_{m}=
+\frac{b_{m}-\left(\sum _{i=1}^{m-1}\ell _{m,i}x_{i}\right)}{\ell _{m,m}}
 $$
 $U x = b$ 에서 후진대입의 해는 다음과 같다.
 $$
-x_{m}={{b_{m}-\left(\sum _{i=1}^{n-m} u _{m,m+i} x_{m+i}\right)} \over { u_{m,m}}}
+x_{m}=\frac{b_{m} - \sum _{i=1}^{n-m} u _{m,m+i} x_{m+i}}{u_{m,m}}
 $$
 
 <div class="prompt input_prompt">
