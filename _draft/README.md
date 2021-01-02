@@ -58,6 +58,11 @@ jupyter의 css 를 따르되, two column 이미지를 만들고 싶을 경우
 
 첨자 표현 <sub>[1]</sub>
 
+This is a example of footnote[<sup>1</sup>](#fn1). Another footnote[<sup>2</sup>](#fn2).
+
+<span id="fn1"> footnote 1</span>
+<span id="fn2"> footnote 2</span>
+
 ### conceal
 <details> <summary> </summary>
 내용이 들어간다.
