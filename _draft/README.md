@@ -5,19 +5,20 @@ typora, jupyter notebook, jekyll 모두에서 호환이 되도록 작성하고�
 ## 그림 
 크기조절을 하기 위해서는 다음과 같이 작성하는 것이 좋다.
 github.io pages에 rendering 하려면 반드시 git add를 해야한다.
-<img src="URL" width="600"> 
+`<img src="URL" width="600"> `
 githubio 페이지에 렌더링 했을떄, 약 600정도사이즈로 하면 적당하다.
 
 ## 텍스트
 ### color
-<span style="color:red"> TEXT </span>
+`<span style="color:red"> TEXT </span>`
 
 ### footnote
 jupyter notebook에서는 보이지 않지만, jekyll에 rendering하면 보인다. 
-어떤 글[^1] 
+어떤 글`[^1]` 
 ...
+```
 [1]: url "description"
-
+```
 
 ## 수식
 $\mathbb{R}$ 실수표현
@@ -37,11 +38,12 @@ inline 수식에 대해서 _ 을 escape 기호를 사용하여  \\_ 로 작성�
 
 ## HTML
 ### picture
+```
 <figure>
   <img src="address" width="300" style="background-color:white"; title="#">
   <figcaption> Fig1. </figcaption>
 </figure>
-
+```
 
 jupyter의 css 를 따르되, two column 이미지를 만들고 싶을 경우
 
@@ -56,30 +58,37 @@ jupyter의 css 를 따르되, two column 이미지를 만들고 싶을 경우
 
 ### footnote 
 
-첨자 표현 <sub>[1]</sub>
+첨자 표현 `<sub>[1]</sub>`
 
-This is a example of footnote[<sup>1</sup>](#fn1). Another footnote[<sup>2</sup>](#fn2).
-
+This is a example of footnote`[<sup>1</sup>](#fn1)`. Another footnote`[<sup>2</sup>](#fn2)`.
+```
 <span id="fn1"> footnote 1</span>
 <span id="fn2"> footnote 2</span>
+```
 
 ### conceal
+```
 <details> <summary> </summary>
 내용이 들어간다.
 </details>
+```
 
 ### bullet
 점 불렛
+```
 <ul>
   <li> </ul>
   <li> </ul>
 </ul>
+```
 
 숫자 불렛
+```
 <ol>
   <li> </ul>
   <li> </ul>
 </ol>
+```
 
 ## minimal mistakes posting
 ### gallery, video
