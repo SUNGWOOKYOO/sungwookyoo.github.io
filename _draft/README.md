@@ -39,12 +39,12 @@ inline 수식에 대해서 _ 을 escape 기호를 사용하여  \\_ 로 작성�
 ## HTML
 ### picture
 ```
-<centor>
+<center>
 <figure>
   <img src="address" width="300" style="background-color:white"; title="#">
   <figcaption> Fig1. </figcaption>
 </figure>
-</centor>
+</center>
 ```
 
 jupyter의 css 를 따르되, two column 이미지를 만들고 싶을 경우
