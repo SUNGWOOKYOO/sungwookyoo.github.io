@@ -16,7 +16,7 @@ header:
  overlay_filter: 0.5
  caption: What is the theory of  Hidden Markov Models (HMM)?
  actions:
-  - label: "rasts go's blog"
+  - label: "rastsgo's blog"
     url: "https://ratsgo.github.io/machine%20learning/2017/03/18/HMMs/"
 ---
 
@@ -50,12 +50,8 @@ Observation들은 어떤 기록들을 의미하고, 이 기록들로부터 알�
 
 `toy example`로 모델이 이미 학습되었다는 가정하에 날씨와 아이스크림을 먹은 횟수에 대한 HMM model 파라미터는 다음 그림과 같다. 여기서 관측가능한 변수는 아이스크림을 먹은 횟수 `(1, 2, 3)` 만 가능.
 
-<center>
-<figure>
-  <img src="/assets/images/hmm/toy_hmm.png" width="500" style="background-color:white"; title="#">
-  <figcaption> Fig1. HMM 모델의 예 </figcaption>
-</figure>
-</center>
+Fig1. HMM 모델의 예
+![png](/assets/images/hmm/toy_hmm.png)
 
 HMM를 이용하는 flow는 다음과 같다. 
 모델 파라미터(`state transition probabilty, emission probability, start probabilty`)는 임의의 초깃값으로 정한다. 이 값은 정확하지 않을 수 있다. 관측된 observation 값들 이용하여 likelihood를 구하고, 그 likelihood를 최대화하도록(EM 알고리즘 방식) 모델 파라미터들을 업데이트해나간다. 업데이트가 충분히 진행되었다면, observation 들의 통계정보가 모델 파라미터에 반영될 것이다. 
@@ -74,19 +70,12 @@ likelihood를 최대화 하는 모델 파라미터를 최적화해야하는 데 
 
 이때 파라미터를 학습하는 방법은 EM (혹은 Baum-Welch) algorithm 을 이용한다. 두 단계를 반복하며 진행된다.
 
-<center>
-<figure>
-  <img src="/assets/images/hmm/em_algo.png" width="500" style="background-color:white"; title="em_algorithm">
-  <figcaption> Fig2. EM(Baum-Welch) Algorithm </figcaption>
-</figure>
-</center>
 
-<center>
-<figure>
-  <img src="/assets/images/hmm/pseudo.png" width="600" style="background-color:white"; title="em_algorithm">
-  <figcaption> Fig3. Pseudo Code of Baum-Welch Algorithm </figcaption>
-</figure>
-</center>
+Fig2. EM(Baum-Welch) Algorithm
+![png](/assets/images/hmm/em_algo.png)
+
+Fig3. Pseudo Code of Baum-Welch Algorithm
+![png](/assets/images/hmm/pseudo.png)
 
 ### E-step
 
@@ -104,12 +93,8 @@ observation sequecne 길이는 $T$ 이고, 상태 수는 $N$ 이라 하자.
 
 naive 하게 계산하면 $O(T N^T)$ 이지만 dynamic programming을 쓰면 $O(N^2T)$ 에 빠르게 계산할 수 있다.
 
-<center>
-<figure>
-  <img src="/assets/images/hmm/evaluation.png" width="400" style="background-color:white"; title="em_algorithm">
-  <figcaption> Fig4. Evaluation: Forward and Backward Algorithm </figcaption>
-</figure>
-</center>
+Fig4. Evaluation: Forward and Backward Algorithm
+![png](/assets/images/hmm/evaluation.png)
 
 $\alpha, \beta$ 의 의미는 다음과 같다.
 
@@ -157,12 +142,8 @@ $$
 
 $t$시점에 $i$번째 상태이고 $t+1$시점에 $j$번째 상태일 확률 $\xi_t(i, j)$ 는 다음과 같이 구한다. 
 
-<center>
-<figure>
-  <img src="/assets/images/hmm/xi.png" width="400" style="background-color:white"; title="em_algorithm">
-  <figcaption> Fig4. xi(크시) 업데이트 </figcaption>
-</figure>
-</center>
+Fig4. xi(크시) 업데이트
+![png](/assets/images/hmm/xi.png)
 
 $$
 \begin{aligned}
