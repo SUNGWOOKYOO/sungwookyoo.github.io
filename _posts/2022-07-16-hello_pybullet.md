@@ -17,7 +17,7 @@ toc_icon: "cog"
 header:
  overlay_image: /assets/images/hello_pybullet_files/hello_pybullet_22_1.png
  overlay_filter: 0.5
- caption: pybullet 시뮬레이션에 hieght feild와 husky 불러온 사진
+ caption: pybullet 시뮬레이션에 hieght field와 husky 불러온 사진
  actions:
   - label: "hello pybullet colab"
     url: "https://colab.research.google.com/github/bulletphysics/bullet3/blob/656a1e74725933e947e5f64d465b62d6f9af683b/examples/pybullet/notebooks/HelloPyBullet.ipynb"
