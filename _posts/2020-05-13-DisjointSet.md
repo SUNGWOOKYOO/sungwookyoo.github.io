@@ -60,7 +60,7 @@ $$
 <span style="color:red">DisjointSet을 만드는 시간이 너무 오래걸린다. </span>
 
 ## Heuristic
-It can be implemented by **Linked List** or **Forests**  <br>
+It can be implemented by **[Linked List](https://www.scaler.com/topics/linked-list/)** or **Forests**  <br>
 I will use **Forests** using <span style="color:red">**2 heuristics**</span>. <br>
  1. Union by rank: height(rank)에 따라 union (balanced tree로 만듦).
  2. Path compression: find 할때, representative를 $O(1)$에 곧바로 찾도록 한다.
