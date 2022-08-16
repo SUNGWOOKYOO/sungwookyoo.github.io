@@ -593,3 +593,4 @@ WorkingTime[floyd]: 37.94217 ms
 [2] [referenced blog - floyd warshall algorithm](https://www.programiz.com/dsa/floyd-warshall-algorithm )<br>
 [3] [geeksforgeeks - detect negative cycles](https://www.geeksforgeeks.org/detect-negative-cycle-graph-bellman-ford/) <br>
 [4] [c++ implementation](https://github.com/SUNGWOOKYOO/Algorithm/blob/master/src_Cplus/graphAlgo/FloydWarshall.cpp) <br>
+[5] [Scaler Topics - Floyd Warshall Algorithm](https://www.scaler.com/topics/data-structures/floyd-warshall-algorithm/) <br>
